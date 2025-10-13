@@ -1,103 +1,114 @@
-import Image from "next/image";
+import Hero from "./components/Hero";
+import SectionHeader from "./components/SectionHeader";
+import ServiceCard from "./components/ServiceCard";
+import MapSection from "./components/MapSection";
+import TestimonialCard from "./components/TestimonialCard";
 
-export default function Home() {
+const services = [
+  { title: "Manned Guarding", desc: "Visible, trained officers to deter and respond." },
+  { title: "K-9 Patrol Units", desc: "Canine teams for detection and rapid interception." },
+  { title: "CCTV Monitoring", desc: "Live monitoring with incident verification and escalation." },
+  { title: "Perimeter Systems", desc: "Alarms and electric fences for proactive perimeter defence." },
+  { title: "VIP Protection", desc: "Discreet, specialised protection for high-profile clients." },
+  { title: "Security Consulting", desc: "Practical risk assessments and tailored security plans." },
+];
+
+const testimonials = [
+  { name: "M. Odhiambo", role: "Facilities Manager", quote: "Professional, reliable, and always on point." },
+  { name: "A. Njoroge", role: "CEO", quote: "Their rapid response made all the difference." },
+  { name: "L. Kamau", role: "Operations Lead", quote: "Smart tech plus disciplined guards increased safety." },
+];
+
+export default function Page() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-gray-50 dark:bg-[#070707] text-slate-900 dark:text-white">
+      <main className="max-w-6xl mx-auto px-6 py-12">
+        <Hero />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        {/* Trust / quick stats bar */}
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="p-4 bg-white dark:bg-[#0f0f0f] rounded shadow flex items-center gap-3">
+            <div className="w-10 h-10 rounded bg-yellow-600 flex items-center justify-center text-white font-bold">10+</div>
+            <div>
+              <div className="text-sm font-semibold">Years in Service</div>
+              <div className="text-xs text-muted-foreground">Serving Kenya&apos;s communities</div>
+            </div>
+          </div>
+          <div className="p-4 bg-white dark:bg-[#0f0f0f] rounded shadow flex items-center gap-3">
+            <div className="w-10 h-10 rounded bg-black flex items-center justify-center text-yellow-400 font-bold">✓</div>
+            <div>
+              <div className="text-sm font-semibold">Certified Teams</div>
+              <div className="text-xs text-muted-foreground">Vetted, trained, insured</div>
+            </div>
+          </div>
+          <div className="p-4 bg-white dark:bg-[#0f0f0f] rounded shadow flex items-center gap-3">
+            <div className="w-10 h-10 rounded bg-slate-800 flex items-center justify-center text-white font-bold">24/7</div>
+            <div>
+              <div className="text-sm font-semibold">24/7 Support</div>
+              <div className="text-xs text-muted-foreground">Monitoring & rapid response</div>
+            </div>
+          </div>
         </div>
+
+        {/* Services */}
+        <section className="mt-10">
+          <SectionHeader title="Featured Services" subtitle="Disciplined, reassuring solutions for every security need." />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+            {services.map((s) => (
+              <ServiceCard key={s.title} title={s.title} description={s.desc} />
+            ))}
+          </div>
+        </section>
+
+        {/* Why choose */}
+        <section className="mt-12">
+          <SectionHeader title="Why Choose Hawkeye 11" subtitle="Local expertise, disciplined teams, modern tech." />
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="p-4 bg-white dark:bg-[#0f0f0f] rounded shadow">
+              <h4 className="font-semibold">Vetted Personnel</h4>
+              <p className="text-sm text-muted-foreground mt-2">Strict recruitment, continuous training and supervision.</p>
+            </div>
+            <div className="p-4 bg-white dark:bg-[#0f0f0f] rounded shadow">
+              <h4 className="font-semibold">Technology First</h4>
+              <p className="text-sm text-muted-foreground mt-2">Integrated CCTV, alarms and real-time monitoring.</p>
+            </div>
+            <div className="p-4 bg-white dark:bg-[#0f0f0f] rounded shadow">
+              <h4 className="font-semibold">Rapid Response</h4>
+              <p className="text-sm text-muted-foreground mt-2">Local teams positioned for fast deployment.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Map */}
+        <section className="mt-12">
+          <SectionHeader title="Coverage Map" subtitle="Where we operate across Kenya" />
+          <MapSection />
+        </section>
+
+        {/* Testimonials */}
+        <section className="mt-12">
+          <SectionHeader title="What Our Clients Say" subtitle="Real feedback from protected organisations" />
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {testimonials.map((t) => (
+              <TestimonialCard key={t.name} name={t.name} role={t.role} quote={t.quote} />
+            ))}
+          </div>
+        </section>
+
+        {/* CTA footer */}
+        <section className="mt-14 rounded-lg overflow-hidden">
+          <div className="bg-black text-white p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <h3 className="text-2xl font-bold">Ready to protect what matters most?</h3>
+              <p className="text-sm text-white/90 mt-1">Request a tailored quote and security assessment today.</p>
+            </div>
+            <div className="flex gap-3">
+              <a href="#contact" className="bg-yellow-400 text-black px-5 py-3 rounded font-semibold">Request Quote</a>
+              <a href="mailto:info@hawkeye11.co.ke" className="border border-white/30 px-4 py-3 rounded">Contact Us</a>
+            </div>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
