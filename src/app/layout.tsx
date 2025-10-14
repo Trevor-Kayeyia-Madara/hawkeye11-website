@@ -13,9 +13,24 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Hawkeye 11 Company Limited",
-  description: "Securing Today. Safeguarding Tomorrow.",
+  title: "Hawkeye 11 Company Limited | Private Security in Kenya",
+  description:
+    "Hawkeye 11 Company Limited – Licensed by PSRA, member of PROSAK. Professional guarding, K9, CCTV & VIP security services across Kenya.",
+  openGraph: {
+    title: "Hawkeye 11 Company Limited",
+    description:
+      "Elite private security services built on discipline, integrity & innovation.",
+    url: "https://www.hawkeye11companylimited.com",
+    siteName: "Hawkeye 11 Company Limited",
+    images: ["/og-image.png"],
+    locale: "en_KE",
+    type: "website",
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
+
 
 export default function RootLayout({
   children,

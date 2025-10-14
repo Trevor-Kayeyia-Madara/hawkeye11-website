@@ -1,20 +1,18 @@
 export function Footer() {
   return (
-    <footer className="bg-dark text-light text-center py-6 mt-12">
-      <div className="space-y-2">
+    <footer className="bg-[#0B0B0B] border-t border-[#1A1A1A] py-10 text-center text-white/70 text-sm font-sans">
+      <div className="max-w-6xl mx-auto px-6 space-y-4">
         <p>
-          Jeupe House, Utawala – Embakasi • Nairobi • Kenya
+          © {new Date().getFullYear()}{" "}
+          <span className="text-[#D4AF37] font-semibold">
+            Hawkeye 11 Company Limited
+          </span>
+          . All rights reserved.
         </p>
-        <p>
-          Tel: +254 721 822 869 / +254 765 869 184 | Email:{" "}
-          <a href="mailto:info@hawkeye11companylimited.com" className="text-gold">
-            info@hawkeye11companylimited.com
-          </a>
+        <p className="text-white/50">
+          Licensed under PSRA License No. PSRA/HCL/19/82  |  Member of PROSAK
         </p>
       </div>
-      <p className="text-sm text-gray-400 mt-4">
-        © {new Date().getFullYear()} Hawkeye 11 Company Limited – All Rights Reserved.
-      </p>
     </footer>
   );
 }
