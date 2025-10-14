@@ -1,1 +1,23 @@
 @import "tailwindcss";
+
+:root {
+  --gold: #D4AF37;
+  --black: #0B0B0B;
+  --white: #FFFFFF;
+}
+
+body {
+  @apply bg-[var(--black)] text-[var(--white)] antialiased tracking-tight;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-serif font-bold text-[var(--white)];
+}
+
+p, li, span, a {
+  @apply font-sans;
+}
+
+a {
+  @apply transition duration-200;
+}
