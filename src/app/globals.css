@@ -1,13 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --gold: #D4AF37;
-  --black: #0B0B0B;
-  --white: #FFFFFF;
+  --accent: #d4af37;
+  --fg: #ffffff;
+  --bg: #0b0b0b;
+  --bg-alt: #111111;
+  --border: #1a1a1a;
 }
 
+.light {
+  --accent: #b08a2e;
+  --fg: #0b0b0b;
+  --bg: #ffffff;
+  --bg-alt: #f5f5f5;
+  --border: #e0e0e0;
+}
+
+
 body {
-  @apply bg-[var(--black)] text-[var(--white)] antialiased tracking-tight;
+  @apply bg-[var(--bg)] text-[var(--fg)] transition-colors duration-500;
 }
 
 h1, h2, h3, h4, h5, h6 {

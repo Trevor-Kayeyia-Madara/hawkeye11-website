@@ -1,4 +1,5 @@
 import "./globals.css";
+import { ThemeProvider } from "next-themes";
 import { Playfair_Display, Inter } from "next/font/google";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
@@ -42,6 +43,7 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${inter.variable} font-sans bg-[#0B0B0B] text-white`}
       >
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}></ThemeProvider>
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />
