@@ -1,21 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
 
-// Font configurations with error handling and performance optimizations
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap", // Improves loading performance
-  preload: true, // Preloads font for better performance
-});
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap", // Improves loading performance
-  preload: true, // Preloads font for better performance
-});
+// Google fonts
+const mont = Montserrat({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-mont" });
+const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "600", "700"], variable: "--font-inter" });
 
 // Enhanced metadata with more comprehensive information
 export const metadata: Metadata = {
@@ -40,15 +30,14 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ }: RootLayoutProps) {
   // Error boundary could be added here for better error handling
   return (
     <html lang="en" suppressHydrationWarning={false}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${mont.variable} ${inter.variable} antialiased bg-white dark:bg-black text-black dark:text-white`}
         suppressHydrationWarning={false}
       >
-        {children}
       </body>
     </html>
   );
