@@ -1,16 +1,15 @@
-import Hero from "./components/Hero";
-import SectionHeader from "./components/SectionHeader";
-import ServiceCard from "./components/ServiceCard";
-import MapSection from "./components/MapSection";
-import TestimonialCard from "./components/TestimonialCard";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+const M: any = motion;
 
 const services = [
   { title: "Manned Guarding", desc: "Visible, trained officers to deter and respond." },
   { title: "K-9 Patrol Units", desc: "Canine teams for detection and rapid interception." },
   { title: "CCTV Monitoring", desc: "Live monitoring with incident verification and escalation." },
   { title: "Perimeter Systems", desc: "Alarms and electric fences for proactive perimeter defence." },
-  { title: "VIP Protection", desc: "Discreet, specialised protection for high-profile clients." },
-  { title: "Security Consulting", desc: "Practical risk assessments and tailored security plans." },
 ];
 
 const testimonials = [
@@ -19,95 +18,185 @@ const testimonials = [
   { name: "L. Kamau", role: "Operations Lead", quote: "Smart tech plus disciplined guards increased safety." },
 ];
 
-export default function Page() {
+function SectionHeader({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-[#070707] text-slate-900 dark:text-white">
-      <main className="max-w-6xl mx-auto px-6 py-12">
-        <Hero />
+    <div className="flex items-center justify-between">
+      <div>
+        <h3 className="text-2xl font-bold">{title}</h3>
+        {subtitle ? <p className="text-sm text-muted-foreground mt-1">{subtitle}</p> : null}
+      </div>
+      <div className="flex-1 ml-6 h-px bg-gradient-to-r from-transparent via-slate-300/30 to-transparent" />
+    </div>
+  );
+}
 
-        {/* Trust / quick stats bar */}
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="p-4 bg-white dark:bg-[#0f0f0f] rounded shadow flex items-center gap-3">
-            <div className="w-10 h-10 rounded bg-yellow-600 flex items-center justify-center text-white font-bold">10+</div>
-            <div>
-              <div className="text-sm font-semibold">Years in Service</div>
-              <div className="text-xs text-muted-foreground">Serving Kenya&apos;s communities</div>
-            </div>
-          </div>
-          <div className="p-4 bg-white dark:bg-[#0f0f0f] rounded shadow flex items-center gap-3">
-            <div className="w-10 h-10 rounded bg-black flex items-center justify-center text-yellow-400 font-bold">✓</div>
-            <div>
-              <div className="text-sm font-semibold">Certified Teams</div>
-              <div className="text-xs text-muted-foreground">Vetted, trained, insured</div>
-            </div>
-          </div>
-          <div className="p-4 bg-white dark:bg-[#0f0f0f] rounded shadow flex items-center gap-3">
-            <div className="w-10 h-10 rounded bg-slate-800 flex items-center justify-center text-white font-bold">24/7</div>
-            <div>
-              <div className="text-sm font-semibold">24/7 Support</div>
-              <div className="text-xs text-muted-foreground">Monitoring & rapid response</div>
-            </div>
-          </div>
-        </div>
+function ServiceCard({ title, description }: { title: string; description: string }) {
+  return (
+    <M.div
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.45 }}
+      className="p-6 rounded-lg border-2 border-yellow-400 bg-white dark:bg-gray-800 text-slate-900 dark:text-white"
+    >
+      <h4 className="font-semibold text-lg">{title}</h4>
+      <p className="text-sm text-muted-foreground mt-2">{description}</p>
+  </M.div>
+  );
+}
 
-        {/* Services */}
-        <section className="mt-10">
+export default function Page() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setIndex((i) => (i + 1) % testimonials.length), 4000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-white dark:bg-[#070707] text-slate-900 dark:text-white">
+      <main className="max-w-6xl mx-auto px-6">
+        {/* Hero */}
+  <M.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="min-h-screen flex items-center"
+        >
+          <div className="w-full">
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
+                <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">
+                  Securing Today. Safeguarding Tomorrow.
+                </span>
+              </h1>
+
+              <p className="mt-6 text-lg text-slate-700 dark:text-slate-300">
+                Professional security solutions that blend trained people and modern technology to keep you safe.
+              </p>
+
+              <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a
+                  href="#services"
+                  className="px-6 py-3 rounded-md font-semibold bg-yellow-400 text-black shadow-md hover:shadow-xl transition-shadow duration-200"
+                >
+                  Request Security Services
+                </a>
+                <a
+                  href="#contact"
+                  className="px-6 py-3 rounded-md font-semibold border-2 border-transparent hover:border-yellow-400 transition-colors duration-200"
+                >
+                  Contact Us Now
+                </a>
+              </div>
+            </div>
+          </div>
+  </M.section>
+
+        {/* About Summary */}
+  <M.section
+          id="about"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-12"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            <div>
+              <h3 className="text-2xl font-bold">About Hawkeye 11</h3>
+              <p className="mt-4 text-slate-700 dark:text-slate-300">
+                We provide professional, reliable security services across commercial and residential sectors —
+                blending local knowledge with international standards.
+              </p>
+              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <li>• Trained, vetted, and uniformed officers</li>
+                <li>• Integrated alarm and monitoring solutions</li>
+                <li>• Rapid local response teams</li>
+              </ul>
+            </div>
+            <div className="rounded-lg overflow-hidden">
+              <div className="h-48 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 flex items-center justify-center">
+                <span className="text-sm text-slate-500 dark:text-slate-300">[Image / Illustration Placeholder]</span>
+              </div>
+            </div>
+          </div>
+  </M.section>
+
+        {/* Featured Services */}
+  <M.section id="services" className="mt-12">
           <SectionHeader title="Featured Services" subtitle="Disciplined, reassuring solutions for every security need." />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
             {services.map((s) => (
               <ServiceCard key={s.title} title={s.title} description={s.desc} />
             ))}
           </div>
-        </section>
+  </M.section>
 
-        {/* Why choose */}
-        <section className="mt-12">
-          <SectionHeader title="Why Choose Hawkeye 11" subtitle="Local expertise, disciplined teams, modern tech." />
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="p-4 bg-white dark:bg-[#0f0f0f] rounded shadow">
-              <h4 className="font-semibold">Vetted Personnel</h4>
-              <p className="text-sm text-muted-foreground mt-2">Strict recruitment, continuous training and supervision.</p>
-            </div>
-            <div className="p-4 bg-white dark:bg-[#0f0f0f] rounded shadow">
-              <h4 className="font-semibold">Technology First</h4>
-              <p className="text-sm text-muted-foreground mt-2">Integrated CCTV, alarms and real-time monitoring.</p>
-            </div>
-            <div className="p-4 bg-white dark:bg-[#0f0f0f] rounded shadow">
-              <h4 className="font-semibold">Rapid Response</h4>
-              <p className="text-sm text-muted-foreground mt-2">Local teams positioned for fast deployment.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Map */}
-        <section className="mt-12">
-          <SectionHeader title="Coverage Map" subtitle="Where we operate across Kenya" />
-          <MapSection />
-        </section>
-
-        {/* Testimonials */}
-        <section className="mt-12">
-          <SectionHeader title="What Our Clients Say" subtitle="Real feedback from protected organisations" />
+        {/* Why Choose Us */}
+  <M.section className="mt-12">
+          <SectionHeader title="Why Choose Us" subtitle="What sets us apart" />
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {testimonials.map((t) => (
-              <TestimonialCard key={t.name} name={t.name} role={t.role} quote={t.quote} />
+            {[
+              { title: "Vetted Personnel", desc: "Strict recruitment & continuous training." },
+              { title: "Technology First", desc: "Integrated CCTV and real-time monitoring." },
+              { title: "Rapid Response", desc: "Local teams positioned for fast deployment." },
+            ].map((c) => (
+              <M.div
+                key={c.title}
+                whileHover={{ scale: 1.02 }}
+                className="p-6 rounded-lg bg-white dark:bg-[#0f0f0f] border hover:border-yellow-400 border-transparent transition-colors"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-yellow-400 text-black flex items-center justify-center font-bold">★</div>
+                  <div>
+                    <h4 className="font-semibold">{c.title}</h4>
+                    <p className="text-sm text-muted-foreground mt-1">{c.desc}</p>
+                  </div>
+                </div>
+              </M.div>
             ))}
           </div>
-        </section>
+        </M.section>
 
-        {/* CTA footer */}
-        <section className="mt-14 rounded-lg overflow-hidden">
-          <div className="bg-black text-white p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div>
-              <h3 className="text-2xl font-bold">Ready to protect what matters most?</h3>
-              <p className="text-sm text-white/90 mt-1">Request a tailored quote and security assessment today.</p>
-            </div>
-            <div className="flex gap-3">
-              <a href="#contact" className="bg-yellow-400 text-black px-5 py-3 rounded font-semibold">Request Quote</a>
-              <a href="mailto:info@hawkeye11.co.ke" className="border border-white/30 px-4 py-3 rounded">Contact Us</a>
+        {/* Testimonials (carousel) */}
+  <M.section className="mt-12">
+          <SectionHeader title="Testimonials" subtitle="Hear from our clients" />
+          <div className="mt-6 relative">
+            <div className="overflow-hidden rounded-lg bg-white dark:bg-[#0f0f0f] p-6">
+              <AnimatePresence mode="wait">
+                <M.div
+                  key={index}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.45 }}
+                >
+                  <p className="text-lg italic text-slate-800 dark:text-slate-200">“{testimonials[index].quote}”</p>
+                  <div className="mt-4 text-sm text-muted-foreground">— {testimonials[index].name}, {testimonials[index].role}</div>
+    </M.div>
+              </AnimatePresence>
             </div>
           </div>
-        </section>
+  </M.section>
+
+        {/* CTA Footer */}
+  <M.section className="mt-14 rounded-lg overflow-hidden">
+          <div className="p-8 flex flex-col sm:flex-row items-center justify-between gap-6 bg-white dark:bg-black">
+            <div>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Ready to protect what matters most?</h3>
+              <p className="text-sm text-slate-700 dark:text-slate-300 mt-1">Request a tailored quote and security assessment today.</p>
+            </div>
+            <div className="flex gap-3">
+              <a
+                href="#contact"
+                className="px-6 py-3 rounded-md font-semibold bg-gradient-to-br from-yellow-400 to-yellow-500 text-black shadow-lg hover:shadow-[0_0_20px_rgba(250,204,21,0.35)] transition-shadow"
+              >
+                Request Quote
+              </a>
+            </div>
+          </div>
+  </M.section>
       </main>
     </div>
   );
