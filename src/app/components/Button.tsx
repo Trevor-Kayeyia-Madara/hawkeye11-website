@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 interface ButtonProps {
   children: ReactNode;
   variant?: "solid" | "outline" | "dark";
+  type?: "button" | "submit" | "reset";
   className?: string;
   href?: string;
 }
@@ -24,7 +25,8 @@ export function Button({
     dark: "bg-black text-white hover:bg-[#D4AF37] hover:text-black",
   };
 
-  const cls = cn(base, variants[variant], className);
+  const cls = cn(base, variants[variant], className || "");
+
 
   if (href)
     return (
