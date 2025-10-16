@@ -10,7 +10,7 @@ export function Footer() {
           . All rights reserved.
         </p>
         <p className="text-white/50">
-          Licensed under PSRA License No. PSRA/HCL/19/82  |  Member of PROSAK
+          Licensed under PSRA |  Member of PROSAK
         </p>
       </div>
     </footer>

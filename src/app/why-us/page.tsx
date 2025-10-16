@@ -110,8 +110,7 @@ export default function WhyUsPage() {
 
         <div className="max-w-5xl mx-auto text-center space-y-6 text-lg text-white/80 font-sans leading-relaxed">
           <p>
-            Hawkeye 11 Company Limited operates under{" "}
-            <span className="font-semibold text-white">License No. PSRA/HCL/19/82</span> issued by the
+            Hawkeye 11 Company Limited operates under
             <span className="text-[#D4AF37] font-semibold"> Private Security Regulation Authority (PSRA)</span>.
           </p>
           <p>

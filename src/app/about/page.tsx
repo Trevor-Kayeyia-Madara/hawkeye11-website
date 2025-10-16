@@ -46,11 +46,7 @@ export default function AboutPage() {
               Hawkeye 11 Company Limited
             </span>{" "}
             is a licensed and registered private security firm established in
-            2013. Operating under{" "}
-            <span className="font-semibold text-white">
-              License No. PSRA/HCL/19/82
-            </span>{" "}
-            issued by the Private Security Regulation Authority (PSRA), we are
+            2013 issued by the Private Security Regulation Authority (PSRA), we are
             also proud members of the{" "}
             <span className="font-semibold text-white">
               Protective and Safety Association of Kenya (PROSAK)
