@@ -1,6 +1,19 @@
 @import "tailwindcss";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
+/* Default Theme — Light (White, Black, Gold) */
 :root {
+  --accent: #d4af37; /* gold */
+  --fg: #0b0b0b; /* black text */
+  --bg: #ffffff; /* white background */
+  --bg-alt: #f8f8f8;
+  --border: #dddddd;
+}
+
+/* Dark Theme — Black, Gold, White */
+.dark {
   --accent: #d4af37;
   --fg: #ffffff;
   --bg: #0b0b0b;
@@ -8,15 +21,7 @@
   --border: #1a1a1a;
 }
 
-.light {
-  --accent: #b08a2e;
-  --fg: #0b0b0b;
-  --bg: #ffffff;
-  --bg-alt: #f5f5f5;
-  --border: #e0e0e0;
-}
-
-
+/* Base body style */
 body {
   @apply bg-[var(--bg)] text-[var(--fg)] transition-colors duration-500;
 }

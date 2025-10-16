@@ -1,8 +1,8 @@
 import "./globals.css";
-import { ThemeProvider } from "next-themes";
 import { Playfair_Display, Inter } from "next/font/google";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
+import { ClientLayout } from "./components/ClientLayout";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -32,21 +32,17 @@ export const metadata = {
   },
 };
 
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${playfair.variable} ${inter.variable} font-sans bg-[#0B0B0B] text-white`}
+        className={`${playfair.variable} ${inter.variable} font-sans transition-colors duration-500`}
       >
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}></ThemeProvider>
-        <Navbar />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+        <ClientLayout>
+          <Navbar />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </ClientLayout>
       </body>
     </html>
   );
