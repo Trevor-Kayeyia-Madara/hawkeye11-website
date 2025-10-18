@@ -1,241 +1,120 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  ShieldCheck,
-  Dog,
-  Camera,
-  UserCheck,
-  Building2,
-  Briefcase,
-  Award,
-  MapPin,
-  CheckCircle2,
-} from "lucide-react";
+import { Shield, Briefcase, Users, MapPin, Phone, Facebook, Instagram, Linkedin } from "lucide-react";
 import { Button } from "./components/Button";
+import Hero from "./components/Hero";
 
 export default function HomePage() {
   return (
-    <main className="bg-[#0B0B0B] text-white overflow-hidden">
-      {/* HERO SECTION */}
-      <section className="relative py-40 text-center">
-        <div className="absolute inset-0 bg-[url('/security-bg.jpg')] bg-cover bg-center opacity-20"></div>
-        <div className="absolute inset-0 bg-[#0B0B0B]/80"></div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="relative z-10 max-w-4xl mx-auto px-6"
-        >
-          <h1 className="text-5xl md:text-7xl font-serif font-extrabold text-[#D4AF37] leading-tight tracking-tight">
-            Securing Today. <br />
-            Safeguarding Tomorrow.
-          </h1>
-          <p className="text-lg md:text-xl text-white/80 mt-6 max-w-2xl mx-auto font-sans">
-            Over a decade of elite private security services, blending precision,
-            integrity, and innovation across Kenya.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-10">
-            <Button variant="solid" href="/services">
-              Our Services
-            </Button>
-            <Button variant="outline" href="/contact">
-              Contact Us
-            </Button>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* ABOUT SUMMARY */}
-      <motion.section
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="py-28 text-center px-6 bg-[#0B0B0B]"
-      >
-        <h2 className="text-4xl font-serif font-bold mb-6 text-[#D4AF37] tracking-tight">
-          About Hawkeye 11
-        </h2>
-        <p className="max-w-3xl mx-auto text-lg leading-relaxed text-white/80 font-sans">
-          Established in 2013, <span className="font-semibold text-white">Hawkeye 11 Company Limited</span> is a licensed private security firm operating under{" "}
-          <span className="font-semibold text-white">PSRA License No. PSRA/HCL/19/82</span>.
-          As proud members of{" "}
-          <span className="font-semibold text-white">PROSAK</span>, we deliver
-          innovative, disciplined, and technology-driven security solutions across Kenya.
+    <main className="bg-light dark:bg-dark text-black dark:text-white transition-colors duration-700 overflow-hidden relative">
+      {/* 💫 Hero Section */}
+      <Hero />
+      {/* 🛡️ About Summary */}
+      <section className="py-28 bg-gray-100 dark:bg-[#111111] text-center px-6">
+        <h2 className="text-4xl font-serif font-bold mb-8 text-[#D4AF37]">About Us</h2>
+        <p className="max-w-4xl mx-auto text-lg text-gray-700 dark:text-white/80 leading-relaxed">
+          Hawkeye 11 is a PSRA-certified security provider committed to protecting lives, assets, and reputation.
+          We leverage technology, rigorous training, and deep operational experience to deliver unmatched reliability.
         </p>
-        <div className="mt-10">
-          <Button variant="solid" href="/about">
-            Learn More
-          </Button>
-        </div>
-      </motion.section>
-
-      {/* WHAT WE DO / BENCHMARK SECTION */}
-<motion.section
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8 }}
-  viewport={{ once: true }}
-  className="py-28 bg-[#111111] text-center px-6"
->
-  <h2 className="text-4xl font-serif font-bold mb-8 text-[#D4AF37]">
-    What We Do
-  </h2>
-  <p className="max-w-4xl mx-auto text-lg text-white/80 leading-relaxed font-sans mb-12">
-    Hawkeye 11 Company Limited delivers professional security solutions that
-    integrate human expertise with advanced technology. We provide a complete
-    range of protection—from manned guarding to modern surveillance, ensuring
-    safety, reliability, and client peace of mind.
-  </p>
-  <h3 className="text-3xl font-serif font-semibold text-[#D4AF37] mb-6">
-    Setting the Benchmark
-  </h3>
-  <p className="max-w-4xl mx-auto text-lg text-white/70 leading-relaxed font-sans">
-    We continuously raise industry standards by investing in personnel
-    training, leveraging smart technology, and maintaining full PSRA
-    compliance. Our operational discipline and customer-first approach
-    have positioned Hawkeye 11 as a benchmark in Kenya’s private security
-    sector.
-  </p>
-</motion.section>
-
-
-      {/* SERVICES PREVIEW */}
-      <section className="py-28 bg-[#111111] px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="text-4xl font-serif font-bold text-center text-[#D4AF37] mb-16 tracking-tight"
-        >
-          Our Core Services
-        </motion.h2>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto"
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-12 max-w-5xl mx-auto">
           {[
-            {
-              icon: ShieldCheck,
-              title: "Manned Guarding",
-              desc: "Professional guards trained for residential, commercial, and corporate environments.",
-            },
-            {
-              icon: Dog,
-              title: "K-9 Dog Unit",
-              desc: "Elite trained dogs and handlers for patrol, crowd control, and special events.",
-            },
-            {
-              icon: Camera,
-              title: "CCTV & Alarm Systems",
-              desc: "Smart surveillance solutions with 24/7 response and system maintenance.",
-            },
-            {
-              icon: UserCheck,
-              title: "VIP Escort & Protection",
-              desc: "Discreet and reliable protection for executives and high-profile individuals.",
-            },
-            {
-              icon: Building2,
-              title: "Facility Management",
-              desc: "Access control, asset protection, and operational support for secure facilities.",
-            },
-            {
-              icon: Briefcase,
-              title: "Security Consultancy",
-              desc: "Comprehensive risk analysis, audits, and tailored security training.",
-            },
-          ].map(({ icon: Icon, title, desc }) => (
+            { label: "Years of Service", value: "10+" },
+            { label: "Trained Guards", value: "300+" },
+            { label: "Clients Served", value: "100+" },
+          ].map((stat, i) => (
             <motion.div
-              key={title}
-              whileHover={{ scale: 1.04 }}
-              className="bg-[#0B0B0B] border border-[#1A1A1A] p-8 rounded-3xl shadow-md hover:shadow-lg transition"
-            >
-              <Icon className="w-12 h-12 text-[#D4AF37] mb-5" />
-              <h3 className="text-xl font-serif font-semibold text-white mb-2 tracking-tight">
-                {title}
-              </h3>
-              <p className="text-white/70 font-sans">{desc}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        <div className="text-center mt-16">
-          <Button variant="solid" href="/services">
-            View All Services
-          </Button>
-        </div>
-      </section>
-
-      {/* WHY CHOOSE US */}
-      <motion.section
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="py-28 bg-[#0B0B0B] text-center px-6"
-      >
-        <h2 className="text-4xl font-serif font-bold mb-14 text-[#D4AF37] tracking-tight">
-          Why Choose Hawkeye 11
-        </h2>
-        <div className="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto">
-          {[
-            {
-              icon: Award,
-              title: "Proven Expertise",
-              desc: "Over 10 years of excellence in delivering reliable and compliant security solutions.",
-            },
-            {
-              icon: MapPin,
-              title: "Nationwide Coverage",
-              desc: "Operational presence across Kenya’s major towns and counties.",
-            },
-            {
-              icon: CheckCircle2,
-              title: "Certified & Insured",
-              desc: "PSRA licensed, PROSAK member, and fully insured operations through AAR Kenya.",
-            },
-          ].map(({ icon: Icon, title, desc }) => (
-            <motion.div
-              key={title}
+              key={i}
               whileHover={{ scale: 1.05 }}
-              className="border border-[#1A1A1A] rounded-3xl p-8 hover:border-[#D4AF37] transition"
+              className="p-6 rounded-2xl border border-[#D4AF37]/40 hover:border-[#D4AF37] transition-all duration-300"
             >
-              <Icon className="w-12 h-12 text-[#D4AF37] mb-4 mx-auto" />
-              <h3 className="text-xl font-serif font-semibold text-white mb-2 tracking-tight">
-                {title}
-              </h3>
-              <p className="text-white/70 font-sans">{desc}</p>
+              <h3 className="text-4xl font-bold text-[#D4AF37] mb-2">{stat.value}</h3>
+              <p className="text-gray-700 dark:text-white/80">{stat.label}</p>
             </motion.div>
           ))}
         </div>
-      </motion.section>
+      </section>
 
-      {/* CALL TO ACTION */}
-      <motion.section
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="py-28 bg-[#111111] text-center px-6"
-      >
-        <h2 className="text-4xl font-serif font-bold mb-6 text-[#D4AF37] tracking-tight">
-          Ready to Secure What Matters?
-        </h2>
-        <p className="text-lg mb-10 text-white/80 font-sans">
-          Connect with our experts today for bespoke protection solutions.
+      {/* ⚙️ Services */}
+      <section className="py-28 text-center px-6">
+        <h2 className="text-4xl font-serif font-bold mb-8 text-[#D4AF37]">Our Services</h2>
+        <p className="max-w-3xl mx-auto mb-16 text-lg text-gray-700 dark:text-white/80">
+          Comprehensive solutions for residential, corporate, and government security — built on trust and technology.
         </p>
-        <Button variant="solid" href="/contact">
-          Get a Quote
-        </Button>
-      </motion.section>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          {[
+            { icon: Shield, title: "Manned Guarding", desc: "Highly trained personnel for homes, offices, and critical sites." },
+            { icon: Briefcase, title: "Cash In Transit", desc: "Secure, insured movement of valuables with GPS-tracked fleets." },
+            { icon: Users, title: "Event Security", desc: "Crowd management and VIP protection for safe, seamless events." },
+            { icon: MapPin, title: "Patrol & Response", desc: "Rapid response units for 24/7 protection across Kenya." },
+          ].map((s, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ y: -6 }}
+              className="p-6 border border-[#D4AF37]/40 rounded-2xl hover:shadow-lg hover:border-[#D4AF37] transition-all duration-300"
+            >
+              <s.icon className="w-12 h-12 mx-auto text-[#D4AF37] mb-4" />
+              <h3 className="text-2xl font-semibold mb-2">{s.title}</h3>
+              <p className="text-gray-700 dark:text-white/70 text-sm">{s.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+        <div className="mt-12">
+          <Button href="/services">View All Services</Button>
+        </div>
+      </section>
+
+      {/* 🏅 Why Choose Us */}
+      <section className="py-28 bg-gray-100 dark:bg-[#111111] text-center px-6">
+        <h2 className="text-4xl font-serif font-bold mb-8 text-[#D4AF37]">Why Choose Hawkeye 11</h2>
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            { title: "Trusted & Certified", text: "Fully licensed by PSRA, compliant with all security regulations." },
+            { title: "Nationwide Presence", text: "From Nairobi to Mombasa, we safeguard clients across Kenya." },
+            { title: "Technology Driven", text: "Real-time tracking, communication, and analytics for efficiency." },
+          ].map((reason, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.05 }}
+              className="p-8 rounded-2xl border border-[#D4AF37]/40 hover:border-[#D4AF37] transition-all duration-300"
+            >
+              <h3 className="text-2xl font-semibold text-[#D4AF37] mb-3">{reason.title}</h3>
+              <p className="text-gray-700 dark:text-white/80">{reason.text}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* 💬 Call to Action */}
+      <section className="py-20 bg-gradient-to-b from-[#D4AF37] to-[#D4AF37]/80 text-black text-center px-6">
+        <h2 className="text-4xl font-serif font-bold mb-6">Ready to Secure with the Best?</h2>
+        <p className="text-lg max-w-2xl mx-auto mb-8">
+          Let’s discuss how Hawkeye 11 can protect what matters most to you.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/contact" variant="dark">Get a Quote</Button>
+          <a
+            href="https://wa.me/254765869184"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 border border-black px-6 py-3 rounded-full hover:bg-black hover:text-[#D4AF37] transition-all"
+          >
+            <Phone className="w-5 h-5" /> WhatsApp Chat
+          </a>
+        </div>
+      </section>
+
+      {/* 🌍 Footer */}
+      <footer className="py-10 bg-dark text-center text-white border-t border-[#D4AF37]/30">
+        <div className="flex justify-center gap-6 mb-4">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#D4AF37]"><Facebook /></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#D4AF37]"><Instagram /></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#D4AF37]"><Linkedin /></a>
+        </div>
+        <p className="text-sm text-white/60">
+          © {new Date().getFullYear()} Hawkeye 11 Security. All rights reserved.
+        </p>
+      </footer>
     </main>
   );
 }

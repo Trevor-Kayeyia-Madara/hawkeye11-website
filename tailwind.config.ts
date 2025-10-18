@@ -1,28 +1,26 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
-  darkMode: "class",
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: "class", // 🌙 Enables dark mode toggling via the `.dark` class
   content: [
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       colors: {
         gold: "#D4AF37",
         dark: "#0B0B0B",
-        light: "#FFFFFF",
-        grayDark: "#1A1A1A",
+        light: "#F9FAFB",
       },
       fontFamily: {
-        serif: ["var(--font-serif)"],
-        sans: ["var(--font-sans)"],
+        sans: ["Inter", "sans-serif"],
+        serif: ["Playfair Display", "serif"],
+      },
+      boxShadow: {
+        gold: "0 4px 20px rgba(212, 175, 55, 0.3)",
       },
     },
   },
   plugins: [],
 };
-
-export default config;

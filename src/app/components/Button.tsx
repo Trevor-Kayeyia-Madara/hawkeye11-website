@@ -16,7 +16,7 @@ export function Button({
   href,
 }: ButtonProps) {
   const base =
-    "inline-block px-8 py-3 font-semibold rounded-full transition text-center text-base";
+    "inline-block px-8 py-3 font-semibold rounded-full transition text-center text-base relative overflow-hidden btn-hover";
 
   const variants = {
     solid: "bg-[#D4AF37] text-black hover:opacity-90",
@@ -26,7 +26,6 @@ export function Button({
   };
 
   const cls = cn(base, variants[variant], className || "");
-
 
   if (href)
     return (
