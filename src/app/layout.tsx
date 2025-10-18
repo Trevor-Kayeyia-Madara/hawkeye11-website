@@ -3,6 +3,8 @@ import { Playfair_Display, Inter } from "next/font/google";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { ClientLayout } from "./components/ClientLayout";
+import { ThemeProvider } from "./components/ThemeProvider";
+import { ThemeToggleFixed } from "./components/ThemeToggle";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -38,11 +40,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={`${playfair.variable} ${inter.variable} font-sans transition-colors duration-500`}
       >
+        <ThemeProvider>
         <ClientLayout>
           <Navbar />
+          <ThemeToggleFixed />
           <main className="flex-grow">{children}</main>
           <Footer />
         </ClientLayout>
+        </ThemeProvider>
       </body>
     </html>
   );

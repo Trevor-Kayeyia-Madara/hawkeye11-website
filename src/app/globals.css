@@ -3,16 +3,14 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* Default Theme — Light (White, Black, Gold) */
 :root {
-  --accent: #d4af37; /* gold */
-  --fg: #0b0b0b; /* black text */
-  --bg: #ffffff; /* white background */
+  --accent: #d4af37;
+  --fg: #0b0b0b;
+  --bg: #ffffff;
   --bg-alt: #f8f8f8;
   --border: #dddddd;
 }
 
-/* Dark Theme — Black, Gold, White */
 .dark {
   --accent: #d4af37;
   --fg: #ffffff;
