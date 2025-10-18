@@ -3,6 +3,7 @@ import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react
 
 export default function Footer() {
   return (
+<<<<<<< HEAD
     <footer className="bg-black text-white py-16 px-6 border-t border-[#D4AF37]/30">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* 🟡 Company Info */}
@@ -83,7 +84,23 @@ export default function Footer() {
 
       <div className="border-t border-white/10 mt-10 pt-6 text-center text-sm text-white/60">
         © {new Date().getFullYear()} Hawkeye 11 Company Limited. All Rights Reserved.
+=======
+    <footer className="bg-dark text-light text-center py-6 mt-12">
+      <div className="space-y-2">
+        <p>
+          Jeupe House, Utawala – Embakasi • Nairobi • Kenya
+        </p>
+        <p>
+          Tel: +254 721 822 869 / +254 765 869 184 | Email:{" "}
+          <a href="mailto:info@hawkeye11companylimited.com" className="text-gold">
+            info@hawkeye11companylimited.com
+          </a>
+        </p>
+>>>>>>> parent of 15f9ffd (Option A done)
       </div>
+      <p className="text-sm text-gray-400 mt-4">
+        © {new Date().getFullYear()} Hawkeye 11 Company Limited – All Rights Reserved.
+      </p>
     </footer>
   );
 }
