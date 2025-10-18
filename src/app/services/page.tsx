@@ -64,6 +64,11 @@ export default function ServicesPage() {
               desc: "Design, installation, and maintenance of CCTV systems with mobile and desktop integration for remote monitoring.",
             },
             {
+              icon: ShieldCheck,
+              title: "Cash In Transit (CIT)",
+              desc: "Secure, insured, and GPS-tracked transportation of valuable assets and cash between premises, financial institutions, and ATMs.",
+                        },
+            {
               icon: Bell,
               title: "Alarm Systems & Rapid Response",
               desc: "24-hour alarm monitoring, technical maintenance, and fast response units for emergency alerts.",

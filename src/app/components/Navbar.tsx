@@ -58,7 +58,7 @@ export function Navbar() {
 
         {/* DESKTOP NAV LINKS */}
         <div className="hidden md:flex items-center space-x-8">
-          {["Home", "About", "Services", "Why Us", "Careers", "Contact"].map(
+          {["Home", "About", "Why Us", "Careers", "Contact"].map(
             (item) => (
               <Link
                 key={item}
@@ -74,6 +74,32 @@ export function Navbar() {
               </Link>
             )
           )}
+            {/* SERVICES DROPDOWN */}
+            <div className="relative group">
+              <button className="text-[var(--fg)] font-medium transition group-hover:text-[var(--accent)]">
+                Services ▾
+              </button>
+              <div className="absolute hidden group-hover:block bg-[var(--bg)] border border-[var(--border)] rounded-lg mt-2 shadow-lg z-50">
+                <div className="flex flex-col text-left py-2">
+                  {[
+                    { name: "Manned Guarding", href: "/services#manned-guarding" },
+                    { name: "K-9 Dog Unit", href: "/services#k9-unit" },
+                    { name: "CCTV Systems", href: "/services#cctv" },
+                    { name: "Cash In Transit (CIT)", href: "/services#cit" },
+                    { name: "VIP Escort", href: "/services#vip-escort" },
+                    { name: "Facility Management", href: "/services#facility" },
+                  ].map((link) => (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      className="px-4 py-2 hover:bg-[var(--accent)]/10 hover:text-[var(--accent)] text-sm whitespace-nowrap"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
 
           {/* THEME TOGGLE (DESKTOP) */}
           <button

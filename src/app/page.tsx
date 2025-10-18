@@ -72,6 +72,36 @@ export default function HomePage() {
         </div>
       </motion.section>
 
+      {/* WHAT WE DO / BENCHMARK SECTION */}
+<motion.section
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+  viewport={{ once: true }}
+  className="py-28 bg-[#111111] text-center px-6"
+>
+  <h2 className="text-4xl font-serif font-bold mb-8 text-[#D4AF37]">
+    What We Do
+  </h2>
+  <p className="max-w-4xl mx-auto text-lg text-white/80 leading-relaxed font-sans mb-12">
+    Hawkeye 11 Company Limited delivers professional security solutions that
+    integrate human expertise with advanced technology. We provide a complete
+    range of protection—from manned guarding to modern surveillance, ensuring
+    safety, reliability, and client peace of mind.
+  </p>
+  <h3 className="text-3xl font-serif font-semibold text-[#D4AF37] mb-6">
+    Setting the Benchmark
+  </h3>
+  <p className="max-w-4xl mx-auto text-lg text-white/70 leading-relaxed font-sans">
+    We continuously raise industry standards by investing in personnel
+    training, leveraging smart technology, and maintaining full PSRA
+    compliance. Our operational discipline and customer-first approach
+    have positioned Hawkeye 11 as a benchmark in Kenya’s private security
+    sector.
+  </p>
+</motion.section>
+
+
       {/* SERVICES PREVIEW */}
       <section className="py-28 bg-[#111111] px-6">
         <motion.h2
