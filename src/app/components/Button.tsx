@@ -1,38 +1,31 @@
-import { cn } from "../lib/utils";
-import { ReactNode } from "react";
-
-interface ButtonProps {
-  children: ReactNode;
-  variant?: "solid" | "outline" | "dark";
-  type?: "button" | "submit" | "reset";
-  className?: string;
-  href?: string;
-}
+"use client";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 export function Button({
-  children,
-  variant = "solid",
-  className,
   href,
-}: ButtonProps) {
-  const base =
-    "inline-block px-8 py-3 font-semibold rounded-full transition text-center text-base relative overflow-hidden btn-hover";
+  children,
+  variant = "gold",
+}: {
+  href: string;
+  children: React.ReactNode;
+  variant?: "gold" | "outline-light" | "outline-dark";
+}) {
+  const base = "inline-flex items-center justify-center px-8 py-3 rounded-full font-semibold transition-all duration-300";
 
-  const variants = {
-    solid: "bg-[#D4AF37] text-black hover:opacity-90",
-    outline:
-      "border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black",
-    dark: "bg-black text-white hover:bg-[#D4AF37] hover:text-black",
+  const styles = {
+    gold: "bg-[#D4AF37] text-black hover:scale-105 hover:shadow-[0_0_15px_rgba(212,175,55,0.5)]",
+    "outline-light":
+      "border-2 border-[#D4AF37] text-white hover:bg-[#D4AF37] hover:text-black",
+    "outline-dark":
+      "border-2 border-[#D4AF37] text-black hover:bg-[#D4AF37] hover:text-black",
   };
 
-  const cls = cn(base, variants[variant], className || "");
-
-  if (href)
-    return (
-      <a href={href} className={cls}>
+  return (
+    <motion.div whileTap={{ scale: 0.95 }}>
+      <Link href={href} className={`${base} ${styles[variant]}`}>
         {children}
-      </a>
-    );
-
-  return <button className={cls}>{children}</button>;
+      </Link>
+    </motion.div>
+  );
 }

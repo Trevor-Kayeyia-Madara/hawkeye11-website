@@ -1,26 +1,60 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  darkMode: "class", // 🌙 Enables dark mode toggling via the `.dark` class
-  content: [
-    "./app/**/*.{js,ts,jsx,tsx}",
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        gold: "#D4AF37",
-        dark: "#0B0B0B",
-        light: "#F9FAFB",
+        // Brand Core
+        gold: {
+          DEFAULT: "#D4AF37", // Hawkeye gold
+          light: "#E5C158",
+          dark: "#B8962E",
+        },
+        black: {
+          DEFAULT: "#0B0B0B", // deep security black
+          soft: "#1A1A1A",
+          faded: "#2D2D2D",
+        },
+        white: {
+          DEFAULT: "#FFFFFF",
+          soft: "#F9F9F9",
+          off: "#F2F2F2",
+        },
+
+        // Semantic Palette (for design tokens)
+        base: {
+          light: "#FFFFFF",
+          dark: "#0B0B0B",
+        },
+        surface: {
+          light: "#F9F9F9",
+          dark: "#111111",
+        },
+        text: {
+          light: "#111111", // ✅ black text on light mode
+          dark: "#FFFFFF",  // ✅ white text on dark mode
+          mutedLight: "#4B5563",
+          mutedDark: "#D1D5DB",
+        },
+        border: {
+          light: "#E5E7EB",
+          dark: "#2C2C2C",
+        },
       },
+
+      // Fonts & Transitions
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
         serif: ["Playfair Display", "serif"],
+        sans: ["Inter", "sans-serif"],
       },
-      boxShadow: {
-        gold: "0 4px 20px rgba(212, 175, 55, 0.3)",
+
+      transitionDuration: {
+        DEFAULT: "300ms",
       },
     },
   },
   plugins: [],
 };
+
+export default config;
