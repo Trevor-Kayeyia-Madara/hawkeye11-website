@@ -1,125 +1,96 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import ThemeToggle from "./ThemeToggle"; // your toggle component
+import { ChevronDown } from "lucide-react";
+import Image from "next/image";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
-
-  const navItems = [
-    { label: "Home", href: "/" },
-    { label: "About", href: "#about" },
-    {
-      label: "Services",
-      dropdown: [
-        { label: "Manned Guarding", href: "/services/manned-guarding" },
-        { label: "Cash in Transit", href: "/services/cash-in-transit" },
-        { label: "Event Security", href: "/services/event-security" },
-      ],
-    },
-    { label: "Why Us", href: "#why-us" },
-    { label: "Contact", href: "/contact" },
-  ];
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-base-light dark:bg-base-dark border-b border-border-light dark:border-border-dark transition-colors duration-500">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo.png" alt="Hawkeye 11" width={48} height={48} />
-          <span className="font-serif text-xl font-bold text-text-light dark:text-text-dark">
+    <nav className="fixed top-0 w-full z-50 backdrop-blur-lg transition-colors duration-500 bg-surface-light/90 dark:bg-base-dark/90 border-b border-gray-light/40 dark:border-gray-dark/60">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+        {/* 🦅 Logo */}
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/logo.png"
+            alt="Hawkeye 11"
+            width={48}
+            height={48}
+            className="rounded-md"
+          />
+          <span className="font-sans font-bold text-xl text-text-light dark:text-text-dark">
             Hawkeye 11
           </span>
         </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) =>
-            item.dropdown ? (
-              <div key={item.label} className="relative group">
-                <button className="flex items-center gap-1 font-medium text-text-light dark:text-text-dark hover:text-gold transition">
-                  {item.label} <ChevronDown size={16} />
-                </button>
-                <div className="absolute hidden group-hover:block top-full left-0 bg-white dark:bg-black shadow-lg rounded-md mt-2">
-                  {item.dropdown.map((d) => (
-                    <Link
-                      key={d.label}
-                      href={d.href}
-                      className="block px-4 py-2 text-sm text-text-light dark:text-text-dark hover:bg-gold hover:text-black dark:hover:text-black transition"
-                    >
-                      {d.label}
-                    </Link>
-                  ))}
-                </div>
+        {/* 🌐 Nav Links */}
+        <div className="hidden md:flex items-center gap-8 font-sans text-base">
+          <Link
+            href="/"
+            className="text-text-light dark:text-text-dark hover:text-gold transition-colors"
+          >
+            Home
+          </Link>
+
+          {/* Dropdown Menu */}
+          <div
+            className="relative"
+            onMouseEnter={() => setDropdownOpen(true)}
+            onMouseLeave={() => setDropdownOpen(false)}
+          >
+            <button
+              className="flex items-center gap-1 text-text-light dark:text-text-dark hover:text-gold transition-colors"
+            >
+              Services <ChevronDown size={16} />
+            </button>
+
+            {dropdownOpen && (
+              <div className="absolute top-full mt-3 bg-surface-light dark:bg-surface-dark shadow-lg rounded-lg py-2 border border-gray-light/20 dark:border-gray-dark/40">
+                {[
+                  { title: "Manned Guarding", href: "/services#guarding" },
+                  { title: "Cash In Transit", href: "/services#cit" },
+                  { title: "CCTV & Alarm Systems", href: "/services#cctv" },
+                  { title: "K9 Dog Unit", href: "/services#k9" },
+                ].map((item) => (
+                  <Link
+                    key={item.title}
+                    href={item.href}
+                    className="block px-6 py-2 hover:bg-gold hover:text-black transition-colors"
+                  >
+                    {item.title}
+                  </Link>
+                ))}
               </div>
-            ) : (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="font-medium text-text-light dark:text-text-dark hover:text-gold transition"
-              >
-                {item.label}
-              </Link>
-            )
-          )}
-          <ThemeToggle />
+            )}
+          </div>
+
+          <Link
+            href="/why-us"
+            className="text-text-light dark:text-text-dark hover:text-gold transition-colors"
+          >
+            Why Us
+          </Link>
+
+          <Link
+            href="/careers"
+            className="text-text-light dark:text-text-dark hover:text-gold transition-colors"
+          >
+            Careers
+          </Link>
+
+          <Link
+            href="/contact"
+            className="text-text-light dark:text-text-dark hover:text-gold transition-colors"
+          >
+            Contact
+          </Link>
         </div>
 
-        {/* Mobile Toggle */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden text-text-light dark:text-text-dark"
-        >
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* 🌙 Theme Toggle */}
+        <ThemeToggle />
       </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ height: 0 }}
-            animate={{ height: "auto" }}
-            exit={{ height: 0 }}
-            className="md:hidden bg-base-light dark:bg-base-dark border-t border-border-light dark:border-border-dark"
-          >
-            <div className="flex flex-col items-start px-6 py-4 space-y-4">
-              {navItems.map((item) =>
-                item.dropdown ? (
-                  <details key={item.label} className="w-full">
-                    <summary className="flex justify-between items-center cursor-pointer font-medium text-text-light dark:text-text-dark hover:text-gold transition">
-                      {item.label}
-                    </summary>
-                    <div className="ml-4 mt-2 flex flex-col space-y-2">
-                      {item.dropdown.map((d) => (
-                        <Link
-                          key={d.label}
-                          href={d.href}
-                          className="text-sm text-text-mutedLight dark:text-text-mutedDark hover:text-gold transition"
-                        >
-                          {d.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </details>
-                ) : (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="font-medium text-text-light dark:text-text-dark hover:text-gold transition"
-                  >
-                    {item.label}
-                  </Link>
-                )
-              )}
-              <ThemeToggle />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </nav>
   );
 }

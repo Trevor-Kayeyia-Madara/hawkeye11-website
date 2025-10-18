@@ -1,60 +1,41 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   darkMode: "class",
   theme: {
     extend: {
       colors: {
-        // Brand Core
-        gold: {
-          DEFAULT: "#D4AF37", // Hawkeye gold
-          light: "#E5C158",
-          dark: "#B8962E",
-        },
-        black: {
-          DEFAULT: "#0B0B0B", // deep security black
-          soft: "#1A1A1A",
-          faded: "#2D2D2D",
-        },
-        white: {
-          DEFAULT: "#FFFFFF",
-          soft: "#F9F9F9",
-          off: "#F2F2F2",
+        // ⚙️ Core Theme Colors
+        base: {
+          light: "#FFFFFF", // clean white
+          dark: "#0B0B0B",  // elegant black
         },
 
-        // Semantic Palette (for design tokens)
-        base: {
-          light: "#FFFFFF",
-          dark: "#0B0B0B",
+        // 🎨 Accents
+        gold: "#D4AF37",            // prestige & luxury
+        blue: "#1E3A8A",            // deep navy blue (trust & authority)
+        green: "#1F4D36",           // muted forest green (stability & protection)
+        gray: {
+          DEFAULT: "#6B7280",       // neutral gray for text
+          light: "#F3F4F6",         // section bg for light mode
+          dark: "#1A1A1A",          // section bg for dark mode
+        },
+
+        // Semantic tokens (for maintainability)
+        text: {
+          light: "#0B0B0B",
+          dark: "#F9FAFB",
         },
         surface: {
-          light: "#F9F9F9",
+          light: "#FFFFFF",
           dark: "#111111",
         },
-        text: {
-          light: "#111111", // ✅ black text on light mode
-          dark: "#FFFFFF",  // ✅ white text on dark mode
-          mutedLight: "#4B5563",
-          mutedDark: "#D1D5DB",
-        },
-        border: {
-          light: "#E5E7EB",
-          dark: "#2C2C2C",
-        },
       },
 
-      // Fonts & Transitions
       fontFamily: {
-        serif: ["Playfair Display", "serif"],
-        sans: ["Inter", "sans-serif"],
-      },
-
-      transitionDuration: {
-        DEFAULT: "300ms",
+        sans: ["Poppins", "ui-sans-serif", "system-ui"],
+        serif: ["Garamond", "ui-serif", "Georgia"],
       },
     },
   },
   plugins: [],
 };
-
-export default config;
