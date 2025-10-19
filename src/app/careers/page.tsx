@@ -85,7 +85,7 @@ export default function CareersPage() {
               size="md"
             />
             <Button
-              text="Chat HR on WhatsApp"
+              text="Chat  on WhatsApp"
               href="https://wa.me/254765869184"
               variant="white"
               size="md"

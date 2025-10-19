@@ -60,7 +60,7 @@ export default function ContactPage() {
           >
             <Mail className="mx-auto md:mx-0 text-gold mb-3" />
             <h3 className="font-semibold text-lg mb-2">Email</h3>
-            <p className="text-gray-700">info@hawkeye11.co.ke</p>
+            <p className="text-gray-700">hawkeye11coltd@gmail.com</p>
           </motion.div>
 
           {/* Location */}

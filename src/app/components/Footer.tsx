@@ -51,7 +51,7 @@ export default function Footer() {
             📞 <a href="tel:+254765869184" className="hover:text-gold transition-colors">+254 765 869 184</a>
           </p>
           <p className="text-sm">
-            ✉️ <a href="mailto:info@hawkeye11companylimited.com" className="hover:text-gold transition-colors">info@hawkeye11companylimited.com</a>
+            ✉️ <a href="mailto:info@hawkeye11companylimited.com" className="hover:text-gold transition-colors">hawkeye11coltd@gmail.com</a>
           </p>
 
           {/* Social Icons */}

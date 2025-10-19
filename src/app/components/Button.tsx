@@ -37,15 +37,13 @@ export default function Button({
   };
 
   // Brand colors
-  const gold = "#ffd700";
-  const black = "#000000";
-  const white = "#ffffff";
+
 
   // Variants
   const variantStyles = {
-    black: `bg-[${black}] text-white border border-transparent hover:bg-[${gold}] hover:text-[${black}]`,
-    gold: `bg-amber-400 text-[${black}] border border-transparent hover:bg-[${black}] hover:text-white`,
-    white: `bg-transparent text-[${black}] border border-[${black}] hover:bg-[${black}] hover:text-amber-400`,
+    black: 'bg-black text-white border border-transparent hover:bg-amber-400 hover:text-black',
+    gold: 'bg-amber-400 text-black border border-transparent hover:bg-black hover:text-white',
+    white: 'g-transparent text-black border border-black hover:bg-black hover:text-amber-400',
   };
 
   const combined = cn(baseStyles, sizeStyles[size], variantStyles[variant], className);
