@@ -44,8 +44,8 @@ export default function Button({
   // Variants
   const variantStyles = {
     black: `bg-[${black}] text-white border border-transparent hover:bg-[${gold}] hover:text-[${black}]`,
-    gold: `bg-[${gold}] text-[${black}] border border-transparent hover:bg-[${black}] hover:text-[${gold}]`,
-    white: `bg-transparent text-[${black}] border border-[${black}] hover:bg-[${black}] hover:text-[${gold}]`,
+    gold: `bg-amber-400 text-[${black}] border border-transparent hover:bg-[${black}] hover:text-white`,
+    white: `bg-transparent text-[${black}] border border-[${black}] hover:bg-[${black}] hover:text-amber-400`,
   };
 
   const combined = cn(baseStyles, sizeStyles[size], variantStyles[variant], className);
