@@ -44,6 +44,8 @@ export default function Home() {
           >
             Read our docs
           </a>
+          <div className="text-gold">Hawkeye 11 works!</div>
+
         </div>
       </main>
       <footer className={styles.footer}>
