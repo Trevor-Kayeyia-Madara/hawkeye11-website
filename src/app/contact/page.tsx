@@ -38,6 +38,11 @@ export default function ContactPage() {
     const mailBody = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
     );
+    const handleSubmitManually = () => {
+  const gmailLink = "https://mail.google.com/mail/?view=cm&fs=1&to=hawkeye11coltd@gmail.com";
+  window.open(gmailLink, "_blank");
+};
+
     const mailSubject = encodeURIComponent(subject || "New Message from Website");
     const mailto = `mailto:hawkeye11coltd@gmail.com?subject=${mailSubject}&body=${mailBody}`;
     const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=hawkeye11coltd@gmail.com&su=${mailSubject}&body=${mailBody}`;
@@ -60,6 +65,39 @@ export default function ContactPage() {
       setStatus("error");
     }
   };
+
+  function handleSubmitManually() {
+    const form = document.querySelector("form") as HTMLFormElement | null;
+
+    const name = (form?.elements.namedItem("name") as HTMLInputElement | null)?.value ?? "";
+    const email = (form?.elements.namedItem("email") as HTMLInputElement | null)?.value ?? "";
+    const subject = (form?.elements.namedItem("subject") as HTMLInputElement | null)?.value ?? "";
+    const message = (form?.elements.namedItem("message") as HTMLTextAreaElement | null)?.value ?? "";
+
+    const mailBody = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+    const mailSubject = encodeURIComponent(subject || "New Message from Website");
+    const mailto = `mailto:hawkeye11coltd@gmail.com?subject=${mailSubject}&body=${mailBody}`;
+    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=hawkeye11coltd@gmail.com&su=${mailSubject}&body=${mailBody}`;
+
+    try {
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      const prefersGmail = navigator.userAgent.includes("Chrome") || navigator.userAgent.includes("Android");
+
+      if (prefersGmail || isMobile) {
+        window.open(gmailLink, "_blank");
+      } else {
+        // fall back to the user's default mail client
+        window.location.href = mailto;
+      }
+
+      setStatus("success");
+      form?.reset();
+    } catch {
+      setStatus("error");
+      // last-resort fallback
+      window.location.href = mailto;
+    }
+  }
 
   return (
     <main className="bg-white text-black">
@@ -181,7 +219,7 @@ export default function ContactPage() {
             className="border border-gray-300 p-3 rounded-md w-full focus:outline-none focus:border-gold"
           ></textarea>
 
-          <Button text="Send Message" variant="black" size="md" className="w-full md:w-auto" />
+          <Button text="Send Message" variant="black" size="md" className="w-full md:w-auto" onClick={() => handleSubmitManually()} />
 
           {/* FEEDBACK */}
           {status === "success" && (
