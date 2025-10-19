@@ -7,3 +7,15 @@
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-out forwards;
 }
+
+@keyframes pulse-gold {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 15px 5px rgba(212, 175, 55, 0.3);
+  }
+}
+.animate-pulse-gold {
+  animation: pulse-gold 2.5s infinite;
+}
