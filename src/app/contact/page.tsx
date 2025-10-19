@@ -80,45 +80,67 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Form */}
-      <section className="py-20 px-6 md:px-16 bg-white">
-        <SectionHeader title="Send a Message" />
-        <motion.form
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          onSubmit={(e) => e.preventDefault()}
-          className="max-w-3xl mx-auto mt-12 space-y-6"
-        >
-          <div className="grid md:grid-cols-2 gap-6">
-            <input
-              type="text"
-              placeholder="Full Name"
-              required
-              className="border border-gray-300 p-3 rounded-md w-full focus:outline-none focus:border-gold"
-            />
-            <input
-              type="email"
-              placeholder="Email Address"
-              required
-              className="border border-gray-300 p-3 rounded-md w-full focus:outline-none focus:border-gold"
-            />
-          </div>
+          {/* Contact Form */}
+    <section className="py-20 px-6 md:px-16 bg-white">
+      <SectionHeader title="Send a Message" />
+      <motion.form
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        onSubmit={(e) => {
+          e.preventDefault();
+          const form = e.currentTarget as HTMLFormElement;
+          const name = (form.elements.namedItem("name") as HTMLInputElement).value;
+          const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+          const subject = (form.elements.namedItem("subject") as HTMLInputElement).value;
+          const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
+
+          // Construct mailto link
+          const mailtoLink = `mailto:hawkeye11coltd@gmail.com?subject=${encodeURIComponent(subject || "New Message from Website")}&body=${encodeURIComponent(
+            `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+          )}`;
+
+          // Open default mail client
+          window.location.href = mailtoLink;
+        }}
+        className="max-w-3xl mx-auto mt-12 space-y-6"
+      >
+        <div className="grid md:grid-cols-2 gap-6">
           <input
             type="text"
-            placeholder="Subject"
-            className="border border-gray-300 p-3 rounded-md w-full focus:outline-none focus:border-gold"
-          />
-          <textarea
-            rows={5}
-            placeholder="Your Message..."
+            name="name"
+            placeholder="Full Name"
             required
             className="border border-gray-300 p-3 rounded-md w-full focus:outline-none focus:border-gold"
-          ></textarea>
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            required
+            className="border border-gray-300 p-3 rounded-md w-full focus:outline-none focus:border-gold"
+          />
+        </div>
 
-          <Button text="Send Message" variant="black" size="md" className="w-full md:w-auto" />
-        </motion.form>
-      </section>
+        <input
+          type="text"
+          name="subject"
+          placeholder="Subject"
+          className="border border-gray-300 p-3 rounded-md w-full focus:outline-none focus:border-gold"
+        />
+
+        <textarea
+          name="message"
+          rows={5}
+          placeholder="Your Message..."
+          required
+          className="border border-gray-300 p-3 rounded-md w-full focus:outline-none focus:border-gold"
+        ></textarea>
+
+        <Button text="Send Message" variant="black" size="md" className="w-full md:w-auto" />
+      </motion.form>
+    </section>
+
 
       {/* Map Section */}
       <section className="py-20 px-6 md:px-16 bg-black text-white text-center">
