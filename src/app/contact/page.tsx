@@ -35,14 +35,25 @@ export default function ContactPage() {
       return;
     }
 
-    const mailto = `mailto:hawkeye11coltd@gmail.com?subject=${encodeURIComponent(
-      subject || "New Message from Website"
-    )}&body=${encodeURIComponent(
+    const mailBody = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-    )}`;
+    );
+    const mailSubject = encodeURIComponent(subject || "New Message from Website");
+    const mailto = `mailto:hawkeye11coltd@gmail.com?subject=${mailSubject}&body=${mailBody}`;
+    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=hawkeye11coltd@gmail.com&su=${mailSubject}&body=${mailBody}`;
 
     try {
-      window.location.href = mailto; // ✅ more reliable than window.open
+      // ✅ detect if Gmail web should be opened (for Chrome or Android)
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      const prefersGmail =
+        navigator.userAgent.includes("Chrome") || navigator.userAgent.includes("Android");
+
+      if (prefersGmail || isMobile) {
+        window.open(gmailLink, "_blank");
+      } else {
+        window.location.href = mailto;
+      }
+
       setStatus("success");
       form.reset();
     } catch {
@@ -70,7 +81,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* CONTACT INFORMATION */}
+      {/* CONTACT INFO */}
       <section className="py-20 px-6 md:px-16 bg-gray-50">
         <SectionHeader title="Reach Us" />
         <div className="grid md:grid-cols-3 gap-10 mt-12 text-center md:text-left">
@@ -103,7 +114,12 @@ export default function ContactPage() {
           >
             <Mail className="mx-auto md:mx-0 text-gold mb-3" />
             <h3 className="font-semibold text-lg mb-2">Email</h3>
-            <p className="text-gray-700">hawkeye11coltd@gmail.com</p>
+            <p
+              className="text-gray-700 cursor-pointer hover:text-gold transition"
+              onClick={handleCopyEmail}
+            >
+              hawkeye11coltd@gmail.com {copied && <span className="text-green-600">✔ Copied</span>}
+            </p>
           </motion.div>
 
           {/* LOCATION */}
@@ -167,16 +183,16 @@ export default function ContactPage() {
 
           <Button text="Send Message" variant="black" size="md" className="w-full md:w-auto" />
 
-          {/* STATUS FEEDBACK */}
+          {/* FEEDBACK */}
           {status === "success" && (
             <p className="text-green-600 mt-4 animate-fadeIn">
-              ✅ Your mail app has opened — please confirm and send your message.
+              ✅ Your mail client or Gmail has opened — please confirm and send.
             </p>
           )}
           {status === "error" && (
             <div className="mt-4 p-4 border border-red-300 rounded-lg bg-red-50">
               <p className="text-red-600 mb-2">
-                ⚠️ Could not open mail app. You can still reach us directly:
+                ⚠️ Could not open email client. You can reach us directly:
               </p>
               <div className="flex items-center gap-3">
                 <a
