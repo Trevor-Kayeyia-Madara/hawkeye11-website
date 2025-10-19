@@ -99,7 +99,7 @@ export default function Navbar() {
             href="https://wa.me/254765869184"
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-4 bg-black text-white px-4 py-2 rounded-md hover:bg-gold hover:text-black transition-all duration-300 shadow-sm hover:shadow-lg"
+            className="ml-4 bg-black text-white px-4 py-2 rounded-md hover:bg-amber-400 hover:text-black transition-all duration-300 shadow-sm hover:shadow-lg"
           >
             WhatsApp
           </a>
@@ -118,30 +118,30 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden bg-white shadow-lg border-t border-gray-200 px-6 py-4 space-y-3 text-sm font-medium animate-fadeIn">
-          <Link href="/" className="block hover:bg-black hover:text-gold rounded-md px-3 py-2 transition-all">Home</Link>
+          <Link href="/" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-2 transition-all">Home</Link>
           <details>
-            <summary className="cursor-pointer hover:bg-black hover:text-gold rounded-md px-3 py-2 transition-all">About</summary>
+            <summary className="cursor-pointer hover:bg-black hover:text-amber-400 rounded-md px-3 py-2 transition-all">About</summary>
             <div className="pl-4 space-y-1 mt-2">
-              <Link href="/about" className="block hover:bg-black hover:text-gold rounded-md px-3 py-1">Company Overview</Link>
-              <Link href="/about#certifications" className="block hover:bg-black hover:text-gold rounded-md px-3 py-1">Certifications</Link>
+              <Link href="/about" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1">Company Overview</Link>
+              <Link href="/about#certifications" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1">Certifications</Link>
             </div>
           </details>
           <details>
-            <summary className="cursor-pointer hover:bg-black hover:text-gold rounded-md px-3 py-2 transition-all">Services</summary>
+            <summary className="cursor-pointer hover:bg-black hover:text-amber-400 rounded-md px-3 py-2 transition-all">Services</summary>
             <div className="pl-4 space-y-1 mt-2">
-              <Link href="/services/guarding" className="block hover:bg-black hover:text-gold rounded-md px-3 py-1">Manned Guarding</Link>
-              <Link href="/services/k9" className="block hover:bg-black hover:text-gold rounded-md px-3 py-1">K9 Dog Unit</Link>
-              <Link href="/services/alarm-cctv" className="block hover:bg-black hover:text-gold rounded-md px-3 py-1">Alarm & CCTV</Link>
-              <Link href="/services/vip" className="block hover:bg-black hover:text-gold rounded-md px-3 py-1">VIP Escort</Link>
-              <Link href="/services/consultancy" className="block hover:bg-black hover:text-gold rounded-md px-3 py-1">Security Consultancy</Link>
-              <Link href="/services/cit" className="block hover:bg-black hover:text-gold rounded-md px-3 py-1">Cash In Transit (CIT)</Link>
+              <Link href="/services/guarding" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1">Manned Guarding</Link>
+              <Link href="/services/k9" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1">K9 Dog Unit</Link>
+              <Link href="/services/alarm-cctv" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1">Alarm & CCTV</Link>
+              <Link href="/services/vip" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1">VIP Escort</Link>
+              <Link href="/services/consultancy" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1">Security Consultancy</Link>
+              <Link href="/services/cit" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1">Cash In Transit (CIT)</Link>
             </div>
           </details>
-          <Link href="/careers" className="block hover:bg-black hover:text-gold rounded-md px-3 py-2">Careers</Link>
-          <Link href="/contact" className="block hover:bg-black hover:text-gold rounded-md px-3 py-2">Contact</Link>
+          <Link href="/careers" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-2">Careers</Link>
+          <Link href="/contact" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-2">Contact</Link>
           <a
             href="https://wa.me/254765869184"
-            className="inline-block bg-black text-white px-4 py-2 rounded-md hover:bg-gold hover:text-black transition-all duration-300 w-full text-center"
+            className="inline-block bg-black text-white px-4 py-2 rounded-md hover:bg-amber-400 hover:text-black transition-all duration-300 w-full text-center"
           >
             WhatsApp
           </a>
