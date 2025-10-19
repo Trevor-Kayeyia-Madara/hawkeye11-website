@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hawkeye11-website.vercel.app/sitemap.xml
