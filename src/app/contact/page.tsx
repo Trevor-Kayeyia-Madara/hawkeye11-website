@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import SectionHeader from "../components/SectionHeader";
 import Button from "../components/Button";
+import { Mail, Phone, MapPin, MessageCircle, Instagram, Linkedin } from "lucide-react";
+import Link from "next/link";
 
 export default function ContactPage() {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
@@ -15,7 +17,7 @@ export default function ContactPage() {
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
     } catch {
-      alert("Could not copy email. Please copy manually: hawkeye11coltd@gmail.com");
+      alert("Could not copy email. Please copy manually.");
     }
   };
 
@@ -23,41 +25,107 @@ export default function ContactPage() {
     e.preventDefault();
 
     const form = e.currentTarget;
-    const name = (form.elements.namedItem("name") as HTMLInputElement).value.trim();
-    const email = (form.elements.namedItem("email") as HTMLInputElement).value.trim();
-    const subject = (form.elements.namedItem("subject") as HTMLInputElement).value.trim();
-    const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value.trim();
+    const name = (form.elements.namedItem("name") as HTMLInputElement).value;
+    const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+    const subject = (form.elements.namedItem("subject") as HTMLInputElement).value;
+    const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
 
     if (!name || !email || !message) {
-      alert("Please fill all required fields.");
+      alert("Please fill in all required fields.");
       return;
     }
 
-    const mailtoLink = `mailto:hawkeye11coltd@gmail.com?subject=${encodeURIComponent(
+    const mailto = `mailto:hawkeye11coltd@gmail.com?subject=${encodeURIComponent(
       subject || "New Message from Website"
     )}&body=${encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
     )}`;
 
     try {
-      const win = window.open(mailtoLink, "_blank");
-      if (win) {
-        setStatus("success");
-        form.reset();
-      } else {
-        setStatus("error");
-      }
-    } catch (err) {
-      console.error("Mailto failed:", err);
+      window.location.href = mailto; // ✅ more reliable than window.open
+      setStatus("success");
+      form.reset();
+    } catch {
       setStatus("error");
     }
   };
 
   return (
-    <main className="bg-white text-black min-h-screen">
+    <main className="bg-white text-black">
+      {/* HERO SECTION */}
+      <section className="relative min-h-[60vh] flex items-center justify-center text-center overflow-hidden bg-black text-white">
+        <div className="absolute inset-0 bg-[url('/images/contact-banner.jpg')] bg-cover bg-center opacity-30" />
+        <div className="relative z-10 px-6 md:px-12 max-w-3xl">
+          <motion.h1
+            className="text-4xl md:text-5xl font-heading font-bold mb-4 text-gold-gradient"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+          >
+            Get in Touch
+          </motion.h1>
+          <p className="text-gray-200 text-lg">
+            Let’s discuss how Hawkeye 11 can safeguard your people, assets, and operations.
+          </p>
+        </div>
+      </section>
+
+      {/* CONTACT INFORMATION */}
+      <section className="py-20 px-6 md:px-16 bg-gray-50">
+        <SectionHeader title="Reach Us" />
+        <div className="grid md:grid-cols-3 gap-10 mt-12 text-center md:text-left">
+          {/* PHONE */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="bg-white rounded-lg shadow-sm p-6 border-l-4 border-gold"
+          >
+            <Phone className="mx-auto md:mx-0 text-gold mb-3" />
+            <h3 className="font-semibold text-lg mb-2">Call / WhatsApp</h3>
+            <p className="text-gray-700">+254 765 869 184</p>
+            <a
+              href="https://wa.me/254765869184"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-4 text-gold hover:underline"
+            >
+              Chat on WhatsApp →
+            </a>
+          </motion.div>
+
+          {/* EMAIL */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="bg-white rounded-lg shadow-sm p-6 border-l-4 border-gold"
+          >
+            <Mail className="mx-auto md:mx-0 text-gold mb-3" />
+            <h3 className="font-semibold text-lg mb-2">Email</h3>
+            <p className="text-gray-700">hawkeye11coltd@gmail.com</p>
+          </motion.div>
+
+          {/* LOCATION */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="bg-white rounded-lg shadow-sm p-6 border-l-4 border-gold"
+          >
+            <MapPin className="mx-auto md:mx-0 text-gold mb-3" />
+            <h3 className="font-semibold text-lg mb-2">Office Location</h3>
+            <p className="text-gray-700">
+              Nairobi, Kenya — Near Wilson Airport<br />
+              (Head Office)
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CONTACT FORM */}
       <section className="py-20 px-6 md:px-16 bg-white">
         <SectionHeader title="Send a Message" />
-
         <motion.form
           onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 20 }}
@@ -99,17 +167,16 @@ export default function ContactPage() {
 
           <Button text="Send Message" variant="black" size="md" className="w-full md:w-auto" />
 
-          {/* Success or Error Feedback */}
+          {/* STATUS FEEDBACK */}
           {status === "success" && (
             <p className="text-green-600 mt-4 animate-fadeIn">
-              ✅ Mail app opened — please confirm and send your message.
+              ✅ Your mail app has opened — please confirm and send your message.
             </p>
           )}
-
           {status === "error" && (
             <div className="mt-4 p-4 border border-red-300 rounded-lg bg-red-50">
               <p className="text-red-600 mb-2">
-                ⚠️ Could not open mail app. You can still contact us directly:
+                ⚠️ Could not open mail app. You can still reach us directly:
               </p>
               <div className="flex items-center gap-3">
                 <a
@@ -129,6 +196,34 @@ export default function ContactPage() {
             </div>
           )}
         </motion.form>
+      </section>
+
+      {/* MAP SECTION */}
+      <section className="py-20 px-6 md:px-16 bg-black text-white text-center">
+        <SectionHeader title="Find Us" textColor="text-white" />
+        <div className="mt-10 max-w-5xl mx-auto border-4 border-gold rounded-lg overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.815813826807!2d36.97053067318379!3d-1.284439835620368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f6d88a269ec31%3A0x7d90ea5716ce440a!2sHawkeye%2011%20Company%20Limited!5e0!3m2!1sen!2ske!4v1760888789410!5m2!1sen!2ske"
+            width="100%"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        {/* SOCIALS */}
+        <div className="mt-10 flex justify-center gap-6 text-gold">
+          <Link href="https://wa.me/254765869184" target="_blank">
+            <MessageCircle className="w-6 h-6 hover:text-white transition-colors" />
+          </Link>
+          <Link href="https://www.instagram.com/11.hawkeye/" target="_blank">
+            <Instagram className="w-6 h-6 hover:text-white transition-colors" />
+          </Link>
+          <Link href="https://www.linkedin.com/in/martin-musa-21545a1a6" target="_blank">
+            <Linkedin className="w-6 h-6 hover:text-white transition-colors" />
+          </Link>
+        </div>
       </section>
     </main>
   );
