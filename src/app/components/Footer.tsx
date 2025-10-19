@@ -1,5 +1,10 @@
 import Link from "next/link";
 import { Instagram, Linkedin, MessageCircle, Music } from "lucide-react";
+import AccreditationCard from "./AccreditationCard";
+
+{/* Add this before closing </footer> */}
+
+
 
 export default function Footer() {
   return (
@@ -14,6 +19,9 @@ export default function Footer() {
           <p className="text-sm text-gray-400">
             Licensed by PSRA • Member of PROSAK • Certified by KCAA
           </p>
+          <div className="mt-8">
+            <AccreditationCard />
+          </div>
         </div>
 
         {/* Quick Links */}
@@ -29,7 +37,9 @@ export default function Footer() {
                   {link}
                 </Link>
               </li>
+              
             ))}
+           
           </ul>
         </div>
 
