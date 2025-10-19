@@ -16,7 +16,7 @@ export default function HomePage() {
         subtitle="Professional, Licensed, and Trusted Security Solutions in Kenya."
         buttonPrimary={{ text: "Our Services", link: "/services" }}
         buttonSecondary={{ text: "Contact Us", link: "/contact" }}
-        backgroundImage="/images/hero.jpg" // Place your hero image here
+        backgroundImage="/images/escort.jpeg" // Place your hero image here
       />
 
       {/* 🖤 Who We Are Section */}
