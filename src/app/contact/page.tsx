@@ -170,7 +170,7 @@ export default function ContactPage() {
             <MapPin className="mx-auto md:mx-0 text-gold mb-3" />
             <h3 className="font-semibold text-lg mb-2">Office Location</h3>
             <p className="text-gray-700">
-              Nairobi, Kenya — Near Wilson Airport<br />
+             Jeupe House, Utawala, Embakasi, Nairobi<br />
               (Head Office)
             </p>
           </motion.div>
