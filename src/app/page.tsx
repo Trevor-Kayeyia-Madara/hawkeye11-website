@@ -54,7 +54,7 @@ export default function HomePage() {
             className="flex justify-center"
           >
             <img
-              src="/images/about-preview.jpg"
+              src="/images/escort.jpeg"
               alt="About Hawkeye 11"
               className="rounded-lg shadow-md w-full md:w-4/5 object-cover hover:scale-105 transition-transform duration-500"
             />

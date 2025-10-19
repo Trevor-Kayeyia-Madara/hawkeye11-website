@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
+import Button from "./Button";
 
 interface ServiceCardProps {
   title: string;
@@ -22,6 +22,7 @@ export default function ServiceCard({
       transition={{ duration: 0.3 }}
       className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 group"
     >
+      {/* Service image */}
       <div className="h-56 overflow-hidden">
         <img
           src={image}
@@ -29,17 +30,21 @@ export default function ServiceCard({
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
         />
       </div>
+
+      {/* Text and button */}
       <div className="p-6">
-        <h3 className="text-lg font-semibold mb-2 group-hover:text-gold transition-colors">
+        <h3 className="text-lg font-semibold mb-2 group-hover:text-gold transition-colors duration-300">
           {title}
         </h3>
-        <p className="text-gray-700 text-sm mb-4">{description}</p>
-        <Link
+        <p className="text-gray-700 text-sm mb-6 leading-relaxed">{description}</p>
+
+        <Button
+          text="Learn More"
           href={link}
-          className="inline-block text-sm font-medium text-black border-b-2 border-transparent hover:border-gold hover:text-gold transition-all duration-300"
-        >
-          Learn More →
-        </Link>
+          variant="gold"
+          size="sm"
+          className="mt-2"
+        />
       </div>
     </motion.div>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
+import Button from "./Button";
 
 interface HeroProps {
   title: string;
@@ -27,7 +27,7 @@ export default function HeroSectionComponent({
         backgroundPosition: "center",
       }}
     >
-      {/* Overlay */}
+      {/* Dark overlay for readability */}
       <div className="absolute inset-0 bg-black/60" />
 
       {/* Content */}
@@ -42,22 +42,23 @@ export default function HeroSectionComponent({
         </h1>
         <p className="text-lg md:text-xl mb-10 text-gray-200">{subtitle}</p>
 
+        {/* Buttons */}
         <div className="flex flex-wrap justify-center gap-6">
           {buttonPrimary && (
-            <Link
+            <Button
+              text={buttonPrimary.text}
               href={buttonPrimary.link}
-              className="bg-gold text-black font-medium px-8 py-3 rounded-md hover:bg-white hover:text-black transition-all duration-300"
-            >
-              {buttonPrimary.text}
-            </Link>
+              variant="gold"
+              size="lg"
+            />
           )}
           {buttonSecondary && (
-            <Link
+            <Button
+              text={buttonSecondary.text}
               href={buttonSecondary.link}
-              className="border-2 border-gold text-gold font-medium px-8 py-3 rounded-md hover:bg-gold hover:text-black transition-all duration-300"
-            >
-              {buttonSecondary.text}
-            </Link>
+              variant="white"
+              size="lg"
+            />
           )}
         </div>
       </motion.div>

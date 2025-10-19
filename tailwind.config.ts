@@ -1,11 +1,11 @@
-/** @type {import('tailwindcss').Config} */
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {
@@ -14,15 +14,21 @@ const config: Config = {
         black: "#000000",
         white: "#FFFFFF",
       },
-      fontFamily: {
-        heading: ["Montserrat", "sans-serif"],
-        body: ["Inter", "sans-serif"],
+      backgroundImage: {
+        "gold-gradient":
+          "linear-gradient(90deg, #D4AF37, #FFD700, #D4AF37)", // ✨ soft gold sweep
       },
-      boxShadow: {
-        gold: "0 0 10px rgba(212, 175, 55, 0.4)",
+      backgroundSize: {
+        shimmer: "200% 100%", // ensures motion coverage
       },
-      borderRadius: {
-        xl: "1rem",
+      keyframes: {
+        shimmer: {
+          "0%": { backgroundPosition: "200% 0" },
+          "100%": { backgroundPosition: "-200% 0" },
+        },
+      },
+      animation: {
+        shimmer: "shimmer 3s linear infinite",
       },
     },
   },
