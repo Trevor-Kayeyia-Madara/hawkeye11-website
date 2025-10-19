@@ -11,42 +11,42 @@ export default function ServicesPage() {
       title: "Manned Guarding",
       description:
         "Trained and vetted guards providing 24/7 protection for residential, corporate, and institutional clients. Our officers uphold discipline, vigilance, and professionalism at every post.",
-      image: "/images/services/guarding.jpg",
+      image: "/images/guarding.jpg",
       link: "/services/guarding",
     },
     {
       title: "K9 Dog Unit",
       description:
         "Highly trained security dogs and certified handlers delivering effective patrol, detection, and crowd control solutions for high-risk environments.",
-      image: "/images/services/k9.jpg",
+      image: "/images/k9.jpg",
       link: "/services/k9",
     },
     {
       title: "Alarm & CCTV Systems",
       description:
         "Advanced surveillance systems with 24/7 monitoring, rapid response integration, and remote access for real-time protection.",
-      image: "/images/services/cctv.jpg",
+      image: "/images/cctv.jpg",
       link: "/services/alarm-cctv",
     },
     {
       title: "VIP Escort",
       description:
         "Discreet, professional escort services ensuring the safety of dignitaries, executives, and high-profile clients throughout transit.",
-      image: "/images/services/vip.jpg",
+      image: "/images/vip.jpg",
       link: "/services/vip",
     },
     {
       title: "Security Consultancy",
       description:
         "Customized risk assessments, training, and investigations to help organizations develop comprehensive safety strategies.",
-      image: "/images/services/consultancy.jpg",
+      image: "/images/consultancy.jpg",
       link: "/services/consultancy",
     },
     {
       title: "Cash In Transit (CIT)",
       description:
         "Secure transportation of cash, documents, and valuables using armored vehicles and trained escorts to guarantee total asset safety.",
-      image: "/images/services/cit.jpg",
+      image: "/images/cit.jpg",
       link: "/services/cit",
     },
   ];
