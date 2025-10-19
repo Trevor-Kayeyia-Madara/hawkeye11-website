@@ -46,7 +46,8 @@ export default function Navbar() {
           {/* About Dropdown */}
           <div
             className="relative group"
-            onClick={()=> setAboutOpen(!aboutOpen)}      
+            onClick={()=> setAboutOpen(true)}
+          
           >
             <button className="px-3 py-2 rounded-md hover:bg-black hover:hover:text-amber-400 transition-all duration-500 flex items-center">
               About ▾
@@ -66,7 +67,8 @@ export default function Navbar() {
           {/* Services Dropdown */}
           <div
             className="relative group"
-            onClick={()=> setServicesOpen(!servicesOpen)}
+           onClick={()=> setServicesOpen(true)}
+         
 
           >
             <button className="px-3 py-2 rounded-md hover:bg-black hover:text-amber-400 transition-all duration-300 flex items-center">
