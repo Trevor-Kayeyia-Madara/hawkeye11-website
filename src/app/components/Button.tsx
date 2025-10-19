@@ -37,7 +37,7 @@ export default function Button({
   };
 
   // Brand colors
-  const gold = "#D4AF37";
+  const gold = "#ffd700";
   const black = "#000000";
   const white = "#ffffff";
 

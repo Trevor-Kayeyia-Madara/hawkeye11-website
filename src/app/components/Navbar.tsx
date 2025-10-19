@@ -68,10 +68,10 @@ export default function Navbar() {
           {/* Services Dropdown */}
           <div
             className="relative group"
-            onMouseEnter={() => setAboutOpen(true)}
-            onClick={()=> setAboutOpen(!aboutOpen)}
+            onMouseEnter={() => setServicesOpen(true)}
+            onClick={()=> setServicesOpen(!servicesOpen)}
           >
-            <button className="px-3 py-2 rounded-md hover:bg-black hover:text-gold transition-all duration-300 flex items-center">
+            <button className="px-3 py-2 rounded-md hover:bg-black hover:text-amber-400 transition-all duration-300 flex items-center">
               Services ▾
             </button>
             {servicesOpen && (
