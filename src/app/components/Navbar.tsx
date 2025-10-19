@@ -47,17 +47,18 @@ export default function Navbar() {
           <div
             className="relative group"
             onMouseEnter={() => setAboutOpen(true)}
-            onMouseLeave={() => setAboutOpen(false)}
+            onClick={()=> setAboutOpen(!aboutOpen)}
+            
           >
             <button className="px-3 py-2 rounded-md hover:bg-black hover:hover:text-amber-400 transition-all duration-500 flex items-center">
               About ▾
             </button>
             {aboutOpen && (
               <div className="absolute left-0 mt-2 bg-white shadow-lg rounded-md py-2 w-48 border border-gray-100 animate-fadeIn">
-                <Link href="/about" className="block px-4 py-2 text-sm hover:bg-black hover:text-gold transition-all duration-300">
+                <Link href="/about" className="block px-4 py-2 text-sm hover:bg-black hover:text-amber-400 transition-all duration-300">
                   Company Overview
                 </Link>
-                <Link href="/about#certifications" className="block px-4 py-2 text-sm hover:bg-black hover:text-gold transition-all duration-300">
+                <Link href="/about#certifications" className="block px-4 py-2 text-sm hover:bg-black hover:text-amber-400 transition-all duration-300">
                   Certifications
                 </Link>
               </div>
@@ -67,8 +68,8 @@ export default function Navbar() {
           {/* Services Dropdown */}
           <div
             className="relative group"
-            onMouseEnter={() => setServicesOpen(true)}
-            onMouseLeave={() => setServicesOpen(false)}
+            onMouseEnter={() => setAboutOpen(true)}
+            onClick={()=> setAboutOpen(!aboutOpen)}
           >
             <button className="px-3 py-2 rounded-md hover:bg-black hover:text-gold transition-all duration-300 flex items-center">
               Services ▾
@@ -86,7 +87,7 @@ export default function Navbar() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="block px-4 py-2 text-sm hover:bg-black hover:text-gold transition-all duration-300"
+                    className="block px-4 py-2 text-sm hover:bg-black hover:text-amber-400 transition-all duration-300"
                   >
                     {item.name}
                   </Link>
