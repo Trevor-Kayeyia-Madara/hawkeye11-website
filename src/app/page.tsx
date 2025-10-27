@@ -4,15 +4,7 @@ import HeroSectionComponent from "./components/HeroSection";
 import ServiceCard from "./components/ServiceCard";
 import SectionHeader from "./components/SectionHeader";
 import AccreditationCard from "./components/AccreditationCard";
-import generateSeoMetadata from "./lib/metadata";
 
-export const metadata = generateSeoMetadata({
-  title: "Hawkeye11 Company Limited | Security & Technology Solutions Kenya",
-  description:
-    "Hawkeye11 provides trusted security, surveillance, and technology solutions across Kenya — from manned guarding and K9 units to CCTV, alarm systems, and cash-in-transit services.",
-  path: "/",
-  image: "/images/og-image.jpg",
-});
 
 export default function HomePage() {
   return (
