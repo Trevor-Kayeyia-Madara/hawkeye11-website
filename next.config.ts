@@ -1,10 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export", // 👈 NEW: enables static export
-  images: {
-    unoptimized: true,
-  },
   async headers() {
   return [
     {
