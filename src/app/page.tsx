@@ -1,4 +1,4 @@
-
+"use client";
 import { motion } from "framer-motion";
 import HeroSectionComponent from "./components/HeroSection";
 import ServiceCard from "./components/ServiceCard";
