@@ -5,7 +5,15 @@ import HeroSectionComponent from "./components/HeroSection";
 import ServiceCard from "./components/ServiceCard";
 import SectionHeader from "./components/SectionHeader";
 import AccreditationCard from "./components/AccreditationCard";
+import generateSeoMetadata from "./lib/metadata";
 
+export const metadata = generateSeoMetadata({
+  title: "Hawkeye11 Company Limited | Security & Technology Solutions Kenya",
+  description:
+    "Hawkeye11 provides trusted security, surveillance, and technology solutions across Kenya — from manned guarding and K9 units to CCTV, alarm systems, and cash-in-transit services.",
+  path: "/",
+  image: "/images/og-image.jpg",
+});
 
 export default function HomePage() {
   return (
@@ -16,7 +24,7 @@ export default function HomePage() {
         subtitle="Professional, Licensed, and Trusted Security Solutions in Kenya."
         buttonPrimary={{ text: "Our Services", link: "/services" }}
         buttonSecondary={{ text: "Contact Us", link: "/contact" }}
-        backgroundImage="/images/escort.jpeg" // Place your hero image here
+        backgroundImage="/images/escort.jpeg"
       />
 
       {/* 🖤 Who We Are Section */}
@@ -31,12 +39,16 @@ export default function HomePage() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <p className="text-lg leading-relaxed text-gray-700">
-              Established in 2013, <span className="font-semibold">Hawkeye 11 Company Limited</span> is a fully
-              licensed private security firm providing comprehensive guarding,
-              K9, surveillance, and alarm response services across Kenya.  
-              <br /><br />
-              With over a decade of excellence, our reputation stands on discipline, technology-driven operations, and
-              unwavering commitment to protecting people and property.
+              Established in 2013,{" "}
+              <span className="font-semibold">Hawkeye 11 Company Limited</span>{" "}
+              is a fully licensed private security firm providing comprehensive
+              guarding, K9, surveillance, and alarm response services across
+              Kenya.
+              <br />
+              <br />
+              With over a decade of excellence, our reputation stands on
+              discipline, technology-driven operations, and unwavering
+              commitment to protecting people and property.
             </p>
             <a
               href="/about"
@@ -70,7 +82,6 @@ export default function HomePage() {
           className="grid md:grid-cols-3 gap-10 mt-10"
           initial="hidden"
           whileInView="visible"
-          transition={{ staggerChildren: 0.15 }}
         >
           {[
             {
@@ -117,7 +128,7 @@ export default function HomePage() {
             },
           ].map((service, i) => (
             <motion.div
-              key={i}
+              key={service.title}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
@@ -141,30 +152,34 @@ export default function HomePage() {
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10"
           initial="hidden"
           whileInView="visible"
-          transition={{ staggerChildren: 0.15 }}
         >
           {[
-        "10+ Years of Proven Experience",
-        "PSRA Licensed & Certified",
-        "Professional, Vetted Personnel",
-        "Nationwide Coverage",
-        "Technology-Driven Operations",
-      ].map((point, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: index * 0.1 }}
-          className="bg-white/10 backdrop-blur-sm border border-gold/30 p-6 rounded-lg hover:bg-white hover:text-black hover:border-white transition-all duration-500"
-        >
-          <p className="font-medium text-base">{point}</p>
-        </motion.div>
-      ))}
+            "10+ Years of Proven Experience",
+            "PSRA Licensed & Certified",
+            "Professional, Vetted Personnel",
+            "Nationwide Coverage",
+            "Technology-Driven Operations",
+          ].map((point, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="bg-white/10 backdrop-blur-sm border border-gold/30 p-6 rounded-lg hover:bg-white hover:text-black hover:border-white transition-all duration-500"
+            >
+              <p className="font-medium text-base">{point}</p>
+            </motion.div>
+          ))}
 
-      {/* Accreditation Card */
-      <AccreditationCard />
-}
-              </motion.div>
+          {/* Accreditation Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <AccreditationCard />
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* 🟨 CTA Section */}

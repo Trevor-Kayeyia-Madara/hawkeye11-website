@@ -8,12 +8,16 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat" });
 
 export const metadata = {
+  metadataBase: new URL("https://hawkeye11companylimited.com"),
+
   title: {
     default: "Hawkeye 11 Company Limited",
     template: "%s | Hawkeye 11 Security Kenya",
   },
+
   description:
     "Hawkeye 11 Company Limited is a licensed Kenyan private security company offering professional guarding, K9, CCTV, alarm, and cash-in-transit services nationwide.",
+
   keywords: [
     "Hawkeye 11",
     "security company Kenya",
@@ -25,25 +29,26 @@ export const metadata = {
     "cash in transit",
     "Kenyan security firm",
   ],
-  authors: [{ name: "Hawkeye 11 Company Limited", url: "https://hawkeye11-website.vercel.app" }],
+
+  authors: [{ name: "Hawkeye 11 Company Limited", url: "https://hawkeye11companylimited.com" }],
   creator: "Hawkeye 11 Company Limited",
   publisher: "Hawkeye 11 Company Limited",
-  metadataBase: new URL("https://hawkeye11-website.vercel.app"),
+
   alternates: {
-    canonical: "https://hawkeye11-website.vercel.app",
+    canonical: "https://hawkeye11companylimited.com",
   },
 
   openGraph: {
     title: "Hawkeye 11 Company Limited — Licensed Kenyan Private Security Firm",
     description:
-      "Professional security services: guards, K9, CCTV, alarms, and cash-in-transit across Kenya.",
-    url: "https://hawkeye11-website.vercel.app",
-    siteName: "Hawkeye 11 Security Kenya",
+      "Professional security services: manned guarding, K9 dog unit, CCTV, alarm response, and cash-in-transit across Kenya.",
+    url: "https://hawkeye11companylimited.com",
+    siteName: "Hawkeye 11 Company Limited",
     locale: "en_KE",
     type: "website",
     images: [
       {
-        url: "/og-image.jpg", // replace with your actual image in /public folder
+        url: "https://hawkeye11companylimited.com/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Hawkeye 11 Company Limited Security Team",
@@ -56,8 +61,8 @@ export const metadata = {
     title: "Hawkeye 11 Company Limited",
     description:
       "Trusted private security company in Kenya — manned guarding, K9, CCTV, alarm response, and CIT services.",
-    creator: "@Hawkeye11", // replace with your Twitter/X handle if available
-    images: ["/og-image.jpg"],
+    creator: "@Hawkeye11", // replace with your actual handle
+    images: ["https://hawkeye11companylimited.com/og-image.jpg"],
   },
 
   icons: {
@@ -87,6 +92,39 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
         <Footer />
         <WhatsAppButton />
+
+        {/* ✅ Structured Data (Organization Schema) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Hawkeye 11 Company Limited",
+              url: "https://hawkeye11companylimited.com",
+              logo: "https://hawkeye11companylimited.com/logo.png",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Jeupe House, Utawala, Embakasi",
+                addressLocality: "Nairobi",
+                addressCountry: "KE",
+              },
+              contactPoint: [
+                {
+                  "@type": "ContactPoint",
+                  telephone: "+254765869184",
+                  contactType: "customer service",
+                  areaServed: "KE",
+                },
+              ],
+              sameAs: [
+                "https://www.facebook.com/hawkeye11companylimited",
+                "https://www.linkedin.com/company/hawkeye11companylimited",
+                "https://x.com/Hawkeye11",
+              ],
+            }),
+          }}
+        />
       </body>
     </html>
   );
