@@ -10,6 +10,16 @@ export default function Navbar() {
   const [aboutOpen, setAboutOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
 
+  const toggleAbout = () => {
+    setAboutOpen(!aboutOpen);
+    setServicesOpen(false); // close other dropdown
+  };
+
+  const toggleServices = () => {
+    setServicesOpen(!servicesOpen);
+    setAboutOpen(false); // close other dropdown
+  };
+
   return (
     <nav className="bg-white text-black shadow-md sticky top-0 z-50 border-b border-gray-200">
       <div className="container mx-auto px-6 py-3 flex items-center justify-between">
@@ -29,11 +39,9 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-6 text-sm font-medium">
-          {[
-            { name: "Home", href: "/" },
+          {[{ name: "Home", href: "/" },
             { name: "Careers", href: "/careers" },
-            { name: "Contact", href: "/contact" },
-          ].map((item) => (
+            { name: "Contact", href: "/contact" }].map((item) => (
             <Link
               key={item.name}
               href={item.href}
@@ -44,20 +52,25 @@ export default function Navbar() {
           ))}
 
           {/* About Dropdown */}
-          <div
-            className="relative group"
-            onClick={()=> setAboutOpen(true)}
-          
-          >
-            <button className="px-3 py-2 rounded-md hover:bg-black hover:hover:text-amber-400 transition-all duration-500 flex items-center">
+          <div className="relative">
+            <button
+              onClick={toggleAbout}
+              className="px-3 py-2 rounded-md hover:bg-black hover:text-amber-400 transition-all duration-300 flex items-center"
+            >
               About ▾
             </button>
             {aboutOpen && (
               <div className="absolute left-0 mt-2 bg-white shadow-lg rounded-md py-2 w-48 border border-gray-100 animate-fadeIn">
-                <Link href="/about" className="block px-4 py-2 text-sm hover:bg-black hover:text-amber-400 transition-all duration-300">
+                <Link
+                  href="/about"
+                  className="block px-4 py-2 text-sm hover:bg-black hover:text-amber-400 transition-all duration-300"
+                >
                   Company Overview
                 </Link>
-                <Link href="/about#certifications" className="block px-4 py-2 text-sm hover:bg-black hover:text-amber-400 transition-all duration-300">
+                <Link
+                  href="/about#certifications"
+                  className="block px-4 py-2 text-sm hover:bg-black hover:text-amber-400 transition-all duration-300"
+                >
                   Certifications
                 </Link>
               </div>
@@ -65,13 +78,11 @@ export default function Navbar() {
           </div>
 
           {/* Services Dropdown */}
-          <div
-            className="relative group"
-           onClick={()=> setServicesOpen(true)}
-         
-
-          >
-            <button className="px-3 py-2 rounded-md hover:bg-black hover:text-amber-400 transition-all duration-300 flex items-center">
+          <div className="relative">
+            <button
+              onClick={toggleServices}
+              className="px-3 py-2 rounded-md hover:bg-black hover:text-amber-400 transition-all duration-300 flex items-center"
+            >
               Services ▾
             </button>
             {servicesOpen && (
