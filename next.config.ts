@@ -1,12 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Explicitly disable Turbopack for build
+  // Disable Turbopack for stability
   experimental: {
-    turbo: undefined, // Ensure turbo is not enabled
+    turbo: undefined,
   },
-  
-  // Your security headers
+
+  // Security headers
   async headers() {
     return [
       {
@@ -18,8 +18,34 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  
-  // Add additional security headers that are commonly recommended
+
+  // ✅ Redirect logic to fix Google’s “Redirect error”
+  async redirects() {
+    return [
+      // Force non-www domain
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.hawkeye11companylimited.com" }],
+        destination: "https://hawkeye11companylimited.com/:path*",
+        permanent: true,
+      },
+      // Remove any /index URLs
+      {
+        source: "/index",
+        destination: "/",
+        permanent: true,
+      },
+      // Force HTTPS (if not already handled at hosting level)
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "hawkeye11companylimited.com" }],
+        missing: [{ type: "header", key: "x-forwarded-proto", value: "https" }],
+        destination: "https://hawkeye11companylimited.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
+
   async rewrites() {
     return [];
   },
