@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Disable Turbopack for stability
+  reactStrictMode: true,
   experimental: {
     turbo: undefined,
   },
