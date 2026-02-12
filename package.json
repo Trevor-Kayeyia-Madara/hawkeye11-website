@@ -2,11 +2,11 @@
   "name": "hawkeye11-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://www.hawkeye11companylimited.com/",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
-    "lint": "next lint"
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.14",
@@ -21,13 +21,13 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-icons": "^5.5.0",
-    "tailwindcss": "^4.1.14"
+    "tailwindcss": "^4.1.14",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/nodemailer": "^7.0.2",
     "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "typescript": "^5"
-  }
+    "@types/react-dom": "^19"
+    }
 }
