@@ -3,19 +3,12 @@
 import { motion } from "framer-motion";
 import Button from "./Button";
 
-interface ServiceCardProps {
-  title: string;
-  description: string;
-  image: string;
-  link: string;
-}
-
 export default function ServiceCard({
   title,
   description,
   image,
   link,
-}: ServiceCardProps) {
+}) {
   return (
     <motion.div
       whileHover={{ scale: 1.03 }}
@@ -36,7 +29,10 @@ export default function ServiceCard({
         <h3 className="text-lg font-semibold mb-2 group-hover:text-gold transition-colors duration-300">
           {title}
         </h3>
-        <p className="text-gray-700 text-sm mb-6 leading-relaxed">{description}</p>
+
+        <p className="text-gray-700 text-sm mb-6 leading-relaxed">
+          {description}
+        </p>
 
         <Button
           text="Learn More"

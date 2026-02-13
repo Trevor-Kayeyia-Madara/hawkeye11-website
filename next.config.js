@@ -1,6 +1,5 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
   experimental: {
     turbo: undefined,
@@ -25,7 +24,12 @@ const nextConfig: NextConfig = {
       // Force non-www domain
       {
         source: "/:path*",
-        has: [{ type: "host", value: "www.hawkeye11companylimited.com" }],
+        has: [
+          {
+            type: "host",
+            value: "www.hawkeye11companylimited.com",
+          },
+        ],
         destination: "https://hawkeye11companylimited.com/:path*",
         permanent: true,
       },
@@ -38,8 +42,19 @@ const nextConfig: NextConfig = {
       // Force HTTPS (if not already handled at hosting level)
       {
         source: "/:path*",
-        has: [{ type: "host", value: "hawkeye11companylimited.com" }],
-        missing: [{ type: "header", key: "x-forwarded-proto", value: "https" }],
+        has: [
+          {
+            type: "host",
+            value: "hawkeye11companylimited.com",
+          },
+        ],
+        missing: [
+          {
+            type: "header",
+            key: "x-forwarded-proto",
+            value: "https",
+          },
+        ],
         destination: "https://hawkeye11companylimited.com/:path*",
         permanent: true,
       },
@@ -51,4 +66,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

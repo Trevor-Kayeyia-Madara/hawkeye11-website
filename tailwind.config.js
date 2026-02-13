@@ -1,11 +1,10 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   darkMode: "class",
   content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
+    "./pages/**/*.{js,jsx}",
+    "./components/**/*.{js,jsx}",
+    "./app/**/*.{js,jsx}",
   ],
   theme: {
     extend: {
@@ -16,10 +15,10 @@ const config: Config = {
       },
       backgroundImage: {
         "gold-gradient":
-          "linear-gradient(90deg, #D4AF37, #FFD700, #D4AF37)", // ✨ soft gold sweep
+          "linear-gradient(90deg, #D4AF37, #FFD700, #D4AF37)",
       },
       backgroundSize: {
-        shimmer: "200% 100%", // ensures motion coverage
+        shimmer: "200% 100%",
       },
       keyframes: {
         shimmer: {
@@ -34,5 +33,3 @@ const config: Config = {
   },
   plugins: [],
 };
-
-export default config;

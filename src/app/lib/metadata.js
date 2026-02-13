@@ -1,19 +1,20 @@
-// /lib/metadata.ts
-import { Metadata } from "next";
-
 const baseUrl = "https://hawkeye11companylimited.com";
 
+/**
+ * Generate SEO metadata for a page
+ * @param {Object} options
+ * @param {string} options.title
+ * @param {string} options.description
+ * @param {string} [options.path]
+ * @param {string} [options.image]
+ * @returns {Object} Metadata object compatible with Next.js
+ */
 export default function generateSeoMetadata({
   title,
   description,
   path = "",
   image = "/images/og-image.jpg",
-}: {
-  title: string;
-  description: string;
-  path?: string;
-  image?: string;
-}): Metadata {
+}) {
   const url = `${baseUrl}${path}`;
 
   return {

@@ -7,6 +7,7 @@ import { Inter, Montserrat } from "next/font/google";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat" });
 
+// Metadata object
 export const metadata = {
   metadataBase: new URL("https://hawkeye11companylimited.com"),
 
@@ -84,7 +85,7 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${montserrat.variable}`}>
       <body>

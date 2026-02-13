@@ -1,10 +1,10 @@
 "use client";
+
 import { motion } from "framer-motion";
 import HeroSectionComponent from "./components/HeroSection";
 import ServiceCard from "./components/ServiceCard";
 import SectionHeader from "./components/SectionHeader";
 import AccreditationCard from "./components/AccreditationCard";
-
 
 export default function HomePage() {
   return (

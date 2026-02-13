@@ -1,4 +1,4 @@
 // Utility to merge class names safely
-export function cn(...classes: (string | false | null | undefined)[]) {
+export function cn(...classes) {
   return classes.filter(Boolean).join(" ");
 }

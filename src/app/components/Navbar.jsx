@@ -32,24 +32,22 @@ export default function Navbar() {
             height={42}
             className="object-contain"
           />
-          <span className="text-xl font-heading font-bold tracking-wide">
-            HAWKEYE 11
-          </span>
+          <span className="text-xl font-heading font-bold tracking-wide">HAWKEYE 11</span>
         </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-6 text-sm font-medium">
-          {[{ name: "Home", href: "/" },
-            { name: "Careers", href: "/careers" },
-            { name: "Contact", href: "/contact" }].map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="relative px-3 py-2 transition-all duration-300 hover:bg-black hover:text-amber-400 rounded-md"
-            >
-              {item.name}
-            </Link>
-          ))}
+          {[{ name: "Home", href: "/" }, { name: "Careers", href: "/careers" }, { name: "Contact", href: "/contact" }].map(
+            (item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="relative px-3 py-2 transition-all duration-300 hover:bg-black hover:text-amber-400 rounded-md"
+              >
+                {item.name}
+              </Link>
+            )
+          )}
 
           {/* About Dropdown */}
           <div className="relative">
@@ -131,27 +129,62 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden bg-white shadow-lg border-t border-gray-200 px-6 py-4 space-y-3 text-sm font-medium animate-fadeIn">
-          <Link href="/" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-2 transition-all">Home</Link>
+          <Link href="/" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-2 transition-all">
+            Home
+          </Link>
           <details>
-            <summary className="cursor-pointer hover:bg-black hover:text-amber-400 rounded-md px-3 py-2 transition-all">About</summary>
+            <summary className="cursor-pointer hover:bg-black hover:text-amber-400 rounded-md px-3 py-2 transition-all">
+              About
+            </summary>
             <div className="pl-4 space-y-1 mt-2">
-              <Link href="/about" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1">Company Overview</Link>
-              <Link href="/about#certifications" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1">Certifications</Link>
+              <Link href="/about" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1">
+                Company Overview
+              </Link>
+              <Link
+                href="/about#certifications"
+                className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1"
+              >
+                Certifications
+              </Link>
             </div>
           </details>
           <details>
-            <summary className="cursor-pointer hover:bg-black hover:text-amber-400 rounded-md px-3 py-2 transition-all">Services</summary>
+            <summary className="cursor-pointer hover:bg-black hover:text-amber-400 rounded-md px-3 py-2 transition-all">
+              Services
+            </summary>
             <div className="pl-4 space-y-1 mt-2">
-              <Link href="/services/guarding" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1">Manned Guarding</Link>
-              <Link href="/services/k9" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1">K9 Dog Unit</Link>
-              <Link href="/services/alarm-cctv" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1">Alarm & CCTV</Link>
-              <Link href="/services/vip" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1">VIP Escort</Link>
-              <Link href="/services/consultancy" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1">Security Consultancy</Link>
-              <Link href="/services/cit" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1">Cash In Transit (CIT)</Link>
+              <Link href="/services/guarding" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1">
+                Manned Guarding
+              </Link>
+              <Link href="/services/k9" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1">
+                K9 Dog Unit
+              </Link>
+              <Link
+                href="/services/alarm-cctv"
+                className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1"
+              >
+                Alarm & CCTV
+              </Link>
+              <Link href="/services/vip" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1">
+                VIP Escort
+              </Link>
+              <Link
+                href="/services/consultancy"
+                className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1"
+              >
+                Security Consultancy
+              </Link>
+              <Link href="/services/cit" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-1">
+                Cash In Transit (CIT)
+              </Link>
             </div>
           </details>
-          <Link href="/careers" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-2">Careers</Link>
-          <Link href="/contact" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-2">Contact</Link>
+          <Link href="/careers" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-2">
+            Careers
+          </Link>
+          <Link href="/contact" className="block hover:bg-black hover:text-amber-400 rounded-md px-3 py-2">
+            Contact
+          </Link>
           <a
             href="https://wa.me/254765869184"
             className="inline-block bg-black text-white px-4 py-2 rounded-md hover:bg-amber-400 hover:text-black transition-all duration-300 w-full text-center"
